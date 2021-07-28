@@ -20,8 +20,6 @@ class MovieRankActivity : AppCompatActivity() {
         setContentView(R.layout.activity_movie_rank)
 
         myHelper = DBHelper(this, "CONTENT", null, 1)
-        //var movieList = myHelper.selectAll()
-
         var movieList = myHelper.Rank()
 
         btn_Back = findViewById<FloatingActionButton>(R.id.btn_back)
