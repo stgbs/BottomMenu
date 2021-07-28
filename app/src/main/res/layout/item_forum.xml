@@ -54,6 +54,7 @@
 
         <TextView
             android:id="@+id/content_forum"
+            android:longClickable="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
@@ -62,12 +63,20 @@
 
         <EditText
             android:id="@+id/edit_content_forum"
+            android:longClickable="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="15dp"
             android:hint="현재 내용이 없습니다. 첫 번째 기록자가 되어보세요!"
             android:layout_margin="15dp"
             android:visibility="gone" />
+
+        <Button
+            android:id="@+id/btn_save"
+            android:text="저장"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
     </LinearLayout>
 
 </LinearLayout>

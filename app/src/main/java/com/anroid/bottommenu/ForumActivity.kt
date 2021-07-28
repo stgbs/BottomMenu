@@ -1,6 +1,5 @@
 package com.anroid.bottommenu
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -38,15 +37,17 @@ class ForumActivity : AppCompatActivity() {
         adapter = ExpandableAdapter(forumList)
         recyclerView.adapter = adapter
 
-/*        btn_edit.setOnClickListener {
+        btn_edit.setOnClickListener {
             if (btn_edit.text == "수정") {
                 btn_edit.setText("저장")
+
 
             } else {
                 btn_edit.setText("수정")
 
+
             }
-        }*/
+        }
 
     }
 
