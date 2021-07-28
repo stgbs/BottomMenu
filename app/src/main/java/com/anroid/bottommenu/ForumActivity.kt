@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView
 
 class ForumActivity : AppCompatActivity() {
 
-    lateinit var btn_edit: Button
     lateinit var forumList: List<Forum>
     lateinit var adapter: ExpandableAdapter
 
@@ -27,8 +26,6 @@ class ForumActivity : AppCompatActivity() {
 
         val recyclerView = findViewById<RecyclerView>(R.id.forum_recyclerView)
 
-        btn_edit = findViewById<Button>(R.id.btn_edit)
-
         forumList = ArrayList()
         forumList = loadData()
 
@@ -36,18 +33,6 @@ class ForumActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
         adapter = ExpandableAdapter(forumList)
         recyclerView.adapter = adapter
-
-        btn_edit.setOnClickListener {
-            if (btn_edit.text == "수정") {
-                btn_edit.setText("저장")
-
-
-            } else {
-                btn_edit.setText("수정")
-
-
-            }
-        }
 
     }
 
