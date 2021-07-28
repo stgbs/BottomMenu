@@ -7,23 +7,22 @@ import android.widget.ListView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class MovieRankActivity : AppCompatActivity() {
-    var movieList = arrayListOf<Movie>(
-        Movie(1, R.drawable.image, "겨울왕국", "겨울에 나온 영화!"),
-        Movie(2, R.drawable.image, "여름왕국", "여름에 나온 영화!"),
-        Movie(3, R.drawable.image, "봄왕국", "봄에 나온 영화!"),
-        Movie(4, R.drawable.image, "가을왕국", "가을에 나온 영화!"),
-        Movie(5, R.drawable.image, "사계왕국", "사계절에 모두 나온 영화!")
-    )
 
     lateinit var btn_Back : FloatingActionButton
     lateinit var btn_popularity : Button
     lateinit var btn_rating : Button
     lateinit var btn_random : Button
     lateinit var listView : ListView
+    lateinit var myHelper : DBHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_movie_rank)
+
+        myHelper = DBHelper(this, "CONTENT", null, 1)
+        //var movieList = myHelper.selectAll()
+
+        var movieList = myHelper.Rank()
 
         btn_Back = findViewById<FloatingActionButton>(R.id.btn_back)
         btn_popularity = findViewById(R.id.btn_popularity)

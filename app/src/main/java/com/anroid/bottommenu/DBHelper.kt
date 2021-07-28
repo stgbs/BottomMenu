@@ -9,7 +9,12 @@ import android.util.Log
 import java.util.*
 
 @Suppress("DEPRECATION")
-class DBHelper(context: Context?, name: String?, factory: SQLiteDatabase.CursorFactory?, version: Int) :
+class DBHelper(
+    context: Context?,
+    name: String?,
+    factory: SQLiteDatabase.CursorFactory?,
+    version: Int
+) :
     SQLiteOpenHelper(context, name, factory, version) {
     override fun onCreate(db: SQLiteDatabase?) {
         if (db != null) {
@@ -20,6 +25,7 @@ class DBHelper(context: Context?, name: String?, factory: SQLiteDatabase.CursorF
 
             // (임시)contents table > Home 화면과 연동
             db!!.execSQL("CREATE TABLE CONTENT(image BLOB," + "title CHAR(20));")
+            db!!.execSQL("CREATE TABLE (image BLOB," + "title CHAR(20));")
         }
     }
 
@@ -103,7 +109,7 @@ class DBHelper(context: Context?, name: String?, factory: SQLiteDatabase.CursorF
         var db: SQLiteDatabase = readableDatabase
         val contentList: ArrayList<Content> = ArrayList<Content>()
         try {
-            val cursor: Cursor = db!!.rawQuery("SELECT * FROM"+ " CONTENT", null)
+            val cursor: Cursor = db!!.rawQuery("SELECT * FROM" + " CONTENT", null)
             while (cursor.moveToNext()) {
                 val image = R.drawable.image
                 val title = cursor.getString(1)
@@ -114,6 +120,27 @@ class DBHelper(context: Context?, name: String?, factory: SQLiteDatabase.CursorF
             Log.e(ContentValues.TAG, "Exception in executing insert SQL.", ex)
         }
         return contentList
+    }
+
+    fun Rank(): ArrayList<Movie> {
+        var db: SQLiteDatabase = readableDatabase
+        val movieList: ArrayList<Movie> = ArrayList<Movie>()
+        try {
+            val cursor: Cursor = db!!.rawQuery("SELECT * FROM" + " CONTENT", null)
+            var rank = 0
+            while (cursor.moveToNext()) {
+                rank = rank + 1
+                val image = R.drawable.image
+                val title = cursor.getString(1)
+                val description = ""
+                val content = Movie(rank, image, title, description)
+                movieList.add(content)
+            }
+        } catch (ex: Exception) {
+            Log.e(ContentValues.TAG, "Exception in executing insert SQL.", ex)
+        }
+
+        return movieList
     }
 
 }

@@ -28,6 +28,7 @@ class ContentAdapter (val contentList: ArrayList<Content>): RecyclerView.Adapter
 
         holder.itemView.setOnClickListener{
             val intent = Intent(holder.itemView?.context, ForumActivity::class.java)
+            intent.putExtra("title", holder.title.text)
             ContextCompat.startActivity(holder.itemView.context, intent, null)
         }
     }

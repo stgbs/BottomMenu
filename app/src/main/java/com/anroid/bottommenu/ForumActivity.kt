@@ -10,9 +10,6 @@ import android.widget.ToggleButton
 
 class ForumActivity : AppCompatActivity() {
 
-    /*    lateinit var dbManager: DBManager
-    lateinit var sqLiteDatabase: SQLiteDatabase*/
-
     lateinit var btn_edit: Button
 
     lateinit var textView_content_1: TextView
@@ -28,8 +25,11 @@ class ForumActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_forum)
 
+        // DB 연동을 위한 초석
+        if(intent.hasExtra("title")) {
+            var txt = intent.getStringExtra("title")
+        }
 
-/*        dbManager = DBManager(this, "forum", null, 1)*/
         btn_edit = findViewById<Button>(R.id.btn_edit)
 
         textView_content_1 = findViewById<TextView>(R.id.textView_content_1)
