@@ -12,9 +12,9 @@
         Why do we use it?</string>
 
     <string-array name="category">
-        <item>1. 등장인물</item>
+        <item>1. 기획의도</item>
         <item>2. 줄거리</item>
-        <item>3. 기획의도</item>
+        <item>3. 등장인물</item>
         <item>4. 이모저모</item>
     </string-array>
 

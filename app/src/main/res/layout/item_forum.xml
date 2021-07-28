@@ -47,7 +47,7 @@
     <LinearLayout
         android:id="@+id/layout_expand"
         android:visibility="gone"
-        android:background="#F1F1F1"
+        android:background="@color/white"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -67,7 +67,7 @@
             android:layout_marginBottom="15dp"
             android:hint="현재 내용이 없습니다. 첫 번째 기록자가 되어보세요!"
             android:layout_margin="15dp"
-            android:visibility="visible" />
+            android:visibility="gone" />
     </LinearLayout>
 
 </LinearLayout>
