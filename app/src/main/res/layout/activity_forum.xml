@@ -7,7 +7,6 @@
     android:layout_margin="15dp"
     tools:context=".ForumActivity">
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -56,6 +55,41 @@
             </LinearLayout>
 
         </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/forum_recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+
+<!--
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="1. 기획의도"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                tools:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView_content_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:hint="현재 내용이 없습니다. 첫 번째 기록자가 되어보세요!"
+                android:visibility="visible"
+                android:text="안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+
+            <EditText
+                android:id="@+id/editText_content_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:hint="현재 내용이 없습니다. 첫 번째 기록자가 되어보세요!"
+                android:visibility="gone"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
 
         <TextView
             android:id="@+id/textView13"
@@ -168,6 +202,7 @@
             android:hint="현재 내용이 없습니다. 첫 번째 기록자가 되어보세요!"
             android:visibility="gone"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+-->
 
     </LinearLayout>
 </ScrollView>

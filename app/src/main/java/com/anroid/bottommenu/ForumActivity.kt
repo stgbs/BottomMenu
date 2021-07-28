@@ -7,19 +7,14 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.ToggleButton
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 class ForumActivity : AppCompatActivity() {
 
     lateinit var btn_edit: Button
-
-    lateinit var textView_content_1: TextView
-    lateinit var editText_content_1: EditText
-    lateinit var textView_content_2: TextView
-    lateinit var editText_content_2: EditText
-    lateinit var textView_content_3: TextView
-    lateinit var editText_content_3: EditText
-    lateinit var textView_content_4: TextView
-    lateinit var editText_content_4: EditText
+    lateinit var forumList: List<Forum>
+    lateinit var adapter: ExpandableAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,18 +25,19 @@ class ForumActivity : AppCompatActivity() {
             var txt = intent.getStringExtra("title")
         }
 
+        val recyclerView = findViewById<RecyclerView>(R.id.forum_recyclerView)
+
         btn_edit = findViewById<Button>(R.id.btn_edit)
 
-        textView_content_1 = findViewById<TextView>(R.id.textView_content_1)
-        editText_content_1 = findViewById<EditText>(R.id.editText_content_1)
-        textView_content_2 = findViewById<TextView>(R.id.textView_content_2)
-        editText_content_2 = findViewById<EditText>(R.id.editText_content_2)
-        textView_content_3 = findViewById<TextView>(R.id.textView_content_3)
-        editText_content_3 = findViewById<EditText>(R.id.editText_content_3)
-        textView_content_4 = findViewById<TextView>(R.id.textView_content_4)
-        editText_content_4 = findViewById<EditText>(R.id.editText_content_4)
+        forumList = ArrayList()
+        forumList = loadData()
 
-        btn_edit.setOnClickListener {
+        recyclerView.setHasFixedSize(true)
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        adapter = ExpandableAdapter(forumList)
+        recyclerView.adapter = adapter
+
+        /*btn_edit.setOnClickListener {
             if (btn_edit.text == "수정") {
                 btn_edit.setText("저장")
 
@@ -67,6 +63,19 @@ class ForumActivity : AppCompatActivity() {
                 editText_content_4.visibility = View.GONE
 
             }
+        }*/
+
+    }
+
+    private fun loadData(): List<Forum> {
+        val people = ArrayList<Forum>()
+        val categories = resources.getStringArray(R.array.category)
+        for (i in categories.indices) {
+            val forum = Forum().apply {
+                category = categories[i]
+            }
+            people.add(forum)
         }
+        return people
     }
 }
