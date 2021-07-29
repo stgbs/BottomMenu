@@ -12,6 +12,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import org.w3c.dom.Text
 
 
 class ForumActivity : AppCompatActivity() {
@@ -21,6 +22,8 @@ class ForumActivity : AppCompatActivity() {
     private lateinit var title: String
 
     lateinit var Title_TextView: TextView
+    lateinit var Genre_View: TextView
+    lateinit var Description_TextView: TextView
     lateinit var imageView: ImageView
     lateinit var forumList: List<Forum>
     lateinit var adapter: ForumExpandableAdapter
@@ -33,6 +36,8 @@ class ForumActivity : AppCompatActivity() {
         setContentView(R.layout.activity_forum)
 
         Title_TextView = findViewById<TextView>(R.id.Title_TextView)
+        Genre_View = findViewById<TextView>(R.id.Genre_View)
+        Description_TextView = findViewById<TextView>(R.id.Description_TextView)
         imageView = findViewById<ImageView>(R.id.image)
 
         myHelper = DBHelper(this, "CONTENT", null, 1)
@@ -48,11 +53,12 @@ class ForumActivity : AppCompatActivity() {
         while (cursor.moveToNext()){
             var image = cursor.getBlob(0) // image
             var genre = cursor.getString(1) // genre
-            var description = cursor.getString(2) // description
+            var Description = cursor.getString(2) // description
 
             imageView.setImageBitmap(BitmapFactory.decodeByteArray(image, 0, image.size))
+            Genre_View.setText(genre)
+            Description_TextView.setText(Description)
         }
-
 
         myHelper = DBHelper(this, "WIKI", null, 1)
 
