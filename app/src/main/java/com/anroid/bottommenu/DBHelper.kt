@@ -25,7 +25,7 @@ class DBHelper(
 
             // (임시)contents table > Home 화면과 연동
             db!!.execSQL("CREATE TABLE CONTENT(image BLOB," + "title CHAR(20));")
-            db!!.execSQL("CREATE TABLE (image BLOB," + "title CHAR(20));")
+            db!!.execSQL("CREATE TABLE WIKI(image BLOB," + "title CHAR(20));")
         }
     }
 

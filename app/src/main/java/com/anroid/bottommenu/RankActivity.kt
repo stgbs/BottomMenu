@@ -1,5 +1,6 @@
 package com.anroid.bottommenu
 
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -38,12 +39,21 @@ class RankActivity : AppCompatActivity() {
 
         btn_popularity.setOnClickListener {
             Flag = "popularity"
+            btn_popularity.setBackgroundColor(this.getResources().getColor(R.color.teal_700))
+            btn_rating.setBackgroundColor(this.getResources().getColor(R.color.teal_200))
+            btn_random.setBackgroundColor(this.getResources().getColor(R.color.teal_200))
         }
         btn_rating.setOnClickListener {
             Flag = "rating"
+            btn_popularity.setBackgroundColor(this.getResources().getColor(R.color.teal_200))
+            btn_rating.setBackgroundColor(this.getResources().getColor(R.color.teal_700))
+            btn_random.setBackgroundColor(this.getResources().getColor(R.color.teal_200))
         }
         btn_random.setOnClickListener {
             Flag = "random"
+            btn_popularity.setBackgroundColor(this.getResources().getColor(R.color.teal_200))
+            btn_rating.setBackgroundColor(this.getResources().getColor(R.color.teal_200))
+            btn_random.setBackgroundColor(this.getResources().getColor(R.color.teal_700))
         }
 
         if(intent.hasExtra("RankCategory")) {
