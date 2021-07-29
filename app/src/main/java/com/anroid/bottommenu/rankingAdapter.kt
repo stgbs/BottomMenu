@@ -18,12 +18,12 @@ class rankingAdapter(val context: Context, val contentList: ArrayList<rankConten
         val Title = view.findViewById<TextView>(R.id.Title_textView)
         val Descripton = view.findViewById<TextView>(R.id.description_textView)
 
-        val movie = contentList[position]
+        val content = contentList[position]
 
-        Rank.text = movie.Rank.toString()
-        Image.setImageResource(movie.Image)
-        Title.text = movie.Title
-        Descripton.text = movie.description
+        Rank.text = content.Rank.toString()
+        Image.setImageResource(content.Image)
+        Title.text = content.Title
+        Descripton.text = content.description
 
         return view
     }
