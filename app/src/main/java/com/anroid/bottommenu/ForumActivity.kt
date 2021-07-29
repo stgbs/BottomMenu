@@ -63,7 +63,7 @@ class ForumActivity : AppCompatActivity() {
         myHelper = DBHelper(this, "WIKI", null, 1)
 
         val recyclerView = findViewById<RecyclerView>(R.id.forum_recyclerView)
-        val contentArr = myHelper.wiki(title)
+        val contentArr = myHelper.WIKI_Select(title)
 
         forumList = ArrayList()
         forumList = loadData(contentArr)
