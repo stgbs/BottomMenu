@@ -14,7 +14,7 @@ class rankingAdapter(val context: Context, val contentList: ArrayList<rankConten
         val view: View = LayoutInflater.from(context).inflate(R.layout.ranking_list_item, null)
 
         val Rank = view.findViewById<TextView>(R.id.rank_textView)
-        val Image = view.findViewById<ImageView>(R.id.Movie_Image)
+        val Image = view.findViewById<ImageView>(R.id.Image)
         val Title = view.findViewById<TextView>(R.id.Title_textView)
         val Descripton = view.findViewById<TextView>(R.id.description_textView)
 

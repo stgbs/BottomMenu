@@ -6,7 +6,7 @@
     android:layout_height="wrap_content">
 
     <ImageView
-        android:id="@+id/Movie_Image"
+        android:id="@+id/Image"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginStart="52dp"
@@ -21,7 +21,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
         android:text="description"
-        app:layout_constraintStart_toEndOf="@+id/Movie_Image"
+        app:layout_constraintStart_toEndOf="@+id/Image"
         app:layout_constraintTop_toBottomOf="@+id/Title_textView" />
 
     <TextView
@@ -34,7 +34,7 @@
         android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
-        app:layout_constraintStart_toEndOf="@+id/Movie_Image" />
+        app:layout_constraintStart_toEndOf="@+id/Image" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
@@ -50,7 +50,7 @@
         android:text="1"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
-        app:layout_constraintEnd_toStartOf="@+id/Movie_Image"
+        app:layout_constraintEnd_toStartOf="@+id/Image"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline2" />
 </androidx.constraintlayout.widget.ConstraintLayout>
