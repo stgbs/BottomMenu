@@ -23,8 +23,7 @@ class DBHelper(
                         "NAME TEXT, PASSWORD TEXT, PASSWORD_CK TEXT);"
             )
 
-            // (임시)contents table > Home 화면과 연동
-            db!!.execSQL("CREATE TABLE CONTENT(image BLOB," + "title CHAR(20));")
+            db!!.execSQL("CREATE TABLE CONTENT(title TEXT, " + "image BLOB, " + "category INTEGER, " + "genre TEXT, description TEXT, " + "date TEXT, " +  "reviewNum INTEGER, " + "rating REAL);")
             db!!.execSQL("CREATE TABLE WIKI(image BLOB," + "title CHAR(20));")
         }
     }
@@ -112,8 +111,8 @@ class DBHelper(
             var count = 0
             while (cursor.moveToNext() && count <= 10) {
                 count += 1
-                val image = R.drawable.image
-                val title = cursor.getString(1)
+                val image = cursor.getBlob(1)
+                val title = cursor.getString(0)
                 val content = Content(image, title)
                 contentList.add(content)
             }
