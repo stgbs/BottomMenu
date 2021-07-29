@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:layout_margin="10dp"
-    tools:context=".MovieRankActivity">
+    tools:context=".RankActivity">
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btn_back"
@@ -18,12 +18,12 @@
         app:srcCompat="@drawable/ic_baseline_arrow_back_24" />
 
     <TextView
-        android:id="@+id/textView_movieRank"
+        android:id="@+id/textView_Rank"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
-        android:text="영화 랭킹"
+        android:text="RANKING"
         android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
     <LinearLayout

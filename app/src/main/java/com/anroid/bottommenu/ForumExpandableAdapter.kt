@@ -6,15 +6,15 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.recyclerview.widget.RecyclerView
 
-class ExpandableAdapter (private val forumList: List<Forum>) : RecyclerView.Adapter<ExpandableAdapter.viewHolder>(){
+class ForumExpandableAdapter (private val forumList: List<Forum>) : RecyclerView.Adapter<ForumExpandableAdapter.viewHolder>(){
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): ExpandableAdapter.viewHolder {
+    ): ForumExpandableAdapter.viewHolder {
         return viewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_forum, parent, false))
     }
 
-    override fun onBindViewHolder(holder: ExpandableAdapter.viewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ForumExpandableAdapter.viewHolder, position: Int) {
         holder.bind(forumList[position])
     }
 

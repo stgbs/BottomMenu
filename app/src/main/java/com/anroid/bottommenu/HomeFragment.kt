@@ -97,14 +97,19 @@ class HomeFragment : Fragment() {
         btn_music = view.findViewById<Button>(R.id.btn_music)
 
         btn_movie.setOnClickListener {
-            val intent = Intent(getActivity(), MovieRankActivity::class.java)
+            val intent = Intent(getActivity(), RankActivity::class.java)
+            intent.putExtra("RankCategory", "MOVIE RANK")
             startActivity(intent)
         }
         btn_book.setOnClickListener {
-
+            val intent = Intent(getActivity(), RankActivity::class.java)
+            intent.putExtra("RankCategory", "BOOK RANK")
+            startActivity(intent)
         }
         btn_music.setOnClickListener {
-
+            val intent = Intent(getActivity(), RankActivity::class.java)
+            intent.putExtra("RankCategory", "MUSIC RANK")
+            startActivity(intent)
         }
 
         return view

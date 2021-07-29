@@ -108,8 +108,10 @@ class DBHelper(
         var db: SQLiteDatabase = readableDatabase
         val contentList: ArrayList<Content> = ArrayList<Content>()
         try {
-            val cursor: Cursor = db!!.rawQuery("SELECT * FROM" + " CONTENT", null)
-            while (cursor.moveToNext()) {
+            val cursor: Cursor = db!!.rawQuery("SELECT * FROM CONTENT", null)
+            var count = 0
+            while (cursor.moveToNext() && count <= 10) {
+                count += 1
                 val image = R.drawable.image
                 val title = cursor.getString(1)
                 val content = Content(image, title)
@@ -121,25 +123,182 @@ class DBHelper(
         return contentList
     }
 
-    fun Rank(): ArrayList<Movie> {
+    fun MovieRank(flag: String): ArrayList<rankContent> {
         var db: SQLiteDatabase = readableDatabase
-        val movieList: ArrayList<Movie> = ArrayList<Movie>()
+        val movieList: ArrayList<rankContent> = ArrayList<rankContent>()
+        val cursor: Cursor
         try {
-            val cursor: Cursor = db!!.rawQuery("SELECT * FROM" + " CONTENT", null)
-            var rank = 0
-            while (cursor.moveToNext()) {
-                rank = rank + 1
-                val image = R.drawable.image
-                val title = cursor.getString(1)
-                val description = ""
-                val content = Movie(rank, image, title, description)
-                movieList.add(content)
+            // Movie category only
+            if(flag == "random"){
+                cursor = db!!.rawQuery("SELECT * FROM CONTENT ORDER BY random()", null)
+
+                var rank = 0
+                while (cursor.moveToNext() || rank <= 10) {
+                    rank = rank + 1
+                    val image = R.drawable.image
+                    val title = cursor.getString(1)
+                    val description = ""
+                    val content = rankContent(rank, image, title, description)
+                    movieList.add(content)
+                }
+            }else if(flag == "popularity"){
+                cursor = db!!.rawQuery("SELECT * FROM CONTENT ORDER BY random()", null)
+
+                var rank = 0
+                while (cursor.moveToNext() || rank <= 10) {
+                    rank = rank + 1
+                    val image = R.drawable.image
+                    val title = cursor.getString(1)
+                    val description = ""
+                    val content = rankContent(rank, image, title, description)
+                    movieList.add(content)
+                }
+            }else if(flag == "rating"){
+                cursor = db!!.rawQuery("SELECT * FROM CONTENT ORDER BY random()", null)
+
+                var rank = 0
+                while (cursor.moveToNext() || rank <= 10) {
+                    rank = rank + 1
+                    val image = R.drawable.image
+                    val title = cursor.getString(1)
+                    val description = ""
+                    val content = rankContent(rank, image, title, description)
+                    movieList.add(content)
+                }
             }
+
         } catch (ex: Exception) {
             Log.e(ContentValues.TAG, "Exception in executing insert SQL.", ex)
         }
 
         return movieList
+    }
+
+    fun MusicRank(flag: String): ArrayList<rankContent> {
+        var db: SQLiteDatabase = readableDatabase
+        val movieList: ArrayList<rankContent> = ArrayList<rankContent>()
+        val cursor: Cursor
+        try {
+            // Music category only
+            if(flag == "random"){
+                cursor = db!!.rawQuery("SELECT * FROM CONTENT ORDER BY random()", null)
+
+                var rank = 0
+                while (cursor.moveToNext() || rank <= 10) {
+                    rank = rank + 1
+                    val image = R.drawable.image
+                    val title = cursor.getString(1)
+                    val description = ""
+                    val content = rankContent(rank, image, title, description)
+                    movieList.add(content)
+                }
+            }else if(flag == "popularity"){
+                cursor = db!!.rawQuery("SELECT * FROM CONTENT ORDER BY random()", null)
+
+                var rank = 0
+                while (cursor.moveToNext() || rank <= 10) {
+                    rank = rank + 1
+                    val image = R.drawable.image
+                    val title = cursor.getString(1)
+                    val description = ""
+                    val content = rankContent(rank, image, title, description)
+                    movieList.add(content)
+                }
+            }else if(flag == "rating"){
+                cursor = db!!.rawQuery("SELECT * FROM CONTENT ORDER BY random()", null)
+
+                var rank = 0
+                while (cursor.moveToNext() || rank <= 10) {
+                    rank = rank + 1
+                    val image = R.drawable.image
+                    val title = cursor.getString(1)
+                    val description = ""
+                    val content = rankContent(rank, image, title, description)
+                    movieList.add(content)
+                }
+            }
+
+        } catch (ex: Exception) {
+            Log.e(ContentValues.TAG, "Exception in executing insert SQL.", ex)
+        }
+
+        return movieList
+    }
+
+    fun BookRank(flag: String): ArrayList<rankContent> {
+        var db: SQLiteDatabase = readableDatabase
+        val movieList: ArrayList<rankContent> = ArrayList<rankContent>()
+        val cursor: Cursor
+        try {
+            // Book category only
+            if(flag == "random"){
+                cursor = db!!.rawQuery("SELECT * FROM CONTENT ORDER BY random()", null)
+
+                var rank = 0
+                while (cursor.moveToNext() || rank <= 10) {
+                    rank = rank + 1
+                    val image = R.drawable.image
+                    val title = cursor.getString(1)
+                    val description = ""
+                    val content = rankContent(rank, image, title, description)
+                    movieList.add(content)
+                }
+            }else if(flag == "popularity"){
+                cursor = db!!.rawQuery("SELECT * FROM CONTENT ORDER BY random()", null)
+
+                var rank = 0
+                while (cursor.moveToNext() || rank <= 10) {
+                    rank = rank + 1
+                    val image = R.drawable.image
+                    val title = cursor.getString(1)
+                    val description = ""
+                    val content = rankContent(rank, image, title, description)
+                    movieList.add(content)
+                }
+            }else if(flag == "rating"){
+                cursor = db!!.rawQuery("SELECT * FROM CONTENT ORDER BY random()", null)
+
+                var rank = 0
+                while (cursor.moveToNext() || rank <= 10) {
+                    rank = rank + 1
+                    val image = R.drawable.image
+                    val title = cursor.getString(1)
+                    val description = ""
+                    val content = rankContent(rank, image, title, description)
+                    movieList.add(content)
+                }
+            }
+
+        } catch (ex: Exception) {
+            Log.e(ContentValues.TAG, "Exception in executing insert SQL.", ex)
+        }
+
+        return movieList
+    }
+
+    fun wiki(title: String): ArrayList<String>{
+        var db: SQLiteDatabase = readableDatabase
+        var content: String
+        val forumList: ArrayList<String> = ArrayList<String>()
+        try {
+            val cursor: Cursor = db!!.rawQuery("SELECT * FROM WIKI WHERE title = '$title'", null)
+            var position = 1
+            while (position <= 4) {
+                cursor.moveToFirst()
+                content = cursor.getString(position)
+                forumList.add(content)
+                position = position + 1
+            }
+        } catch (ex: Exception) {
+            Log.e(ContentValues.TAG, "Exception in executing insert SQL.", ex)
+        }
+        return forumList
+    }
+
+    fun updateWIKI(update_text: String, title: String){
+        var db: SQLiteDatabase = writableDatabase
+        db!!.execSQL("UPDATE WIKI SET content_1 = '$update_text' WHERE title = '$title';")
+        db.close()
     }
 
 }
