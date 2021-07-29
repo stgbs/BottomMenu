@@ -11,7 +11,7 @@ class LoginActivity : AppCompatActivity() {
 
     lateinit var btn_login:Button
     lateinit var btn_register:Button
-    lateinit var et_id:EditText
+    lateinit var et_email:EditText
     lateinit var et_pass:EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,11 +22,11 @@ class LoginActivity : AppCompatActivity() {
 
         btn_login=findViewById(R.id.btn_login)
         btn_register=findViewById(R.id.btn_register)
-        et_id=findViewById(R.id.et_id)
+        et_email=findViewById(R.id.et_email)
         et_pass=findViewById(R.id.et_pass)
 
         btn_login.setOnClickListener {
-            if(dbHelper.getResult1(et_id.getText().toString(), et_pass.getText().toString()) == true){
+            if(dbHelper.getResult1(et_email.getText().toString(), et_pass.getText().toString()) == true){
                 val intent= Intent(this, MainActivity::class.java)
                 startActivity(intent)
             }else{

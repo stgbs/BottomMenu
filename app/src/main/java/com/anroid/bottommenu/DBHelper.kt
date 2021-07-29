@@ -20,7 +20,7 @@ class DBHelper(
         if (db != null) {
             db.execSQL(
                 "CREATE TABLE MEMBER(EMAIL TEST," +
-                        "ID TEXT, PASSWORD TEXT, PASSWORD_CK TEXT);"
+                        "NAME TEXT, PASSWORD TEXT, PASSWORD_CK TEXT);"
             )
 
             // (임시)contents table > Home 화면과 연동
@@ -34,20 +34,19 @@ class DBHelper(
     }
 
     fun insert(
-        email: String, id: String, password: String, password_ck: String
+        email: String, name: String, password: String, password_ck: String
     ) {
         var db: SQLiteDatabase = writableDatabase
 
         db.execSQL(
-            "INSERT INTO MEMBER VALUES('" + email + "'" + ", '" + id + "'" + ", '" + password + "'" + ", '" + password_ck + "');"
+            "INSERT INTO MEMBER VALUES('" + email + "'" + ", '" + name + "'" + ", '" + password + "'" + ", '" + password_ck + "');"
 
         )
         db.close()
     }
 
     fun update(
-        name: String, password: String, password_ck: String, phone: String, email: String,
-        address: String, level: String
+        name: String, password: String, password_ck: String, email: String
     ) {
         var db: SQLiteDatabase = writableDatabase
 

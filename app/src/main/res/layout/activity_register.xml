@@ -15,18 +15,18 @@
         android:ems="10"
         android:hint="아이디:  Email"
         android:inputType="textEmailAddress"
-        app:layout_constraintBottom_toTopOf="@+id/et_id"
+        app:layout_constraintBottom_toTopOf="@+id/et_name"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/et_id"
+        android:id="@+id/et_name"
         android:layout_width="200dp"
         android:layout_height="45dp"
         android:layout_marginStart="55dp"
         android:layout_marginBottom="35dp"
         android:ems="10"
         android:hint="닉네임"
-        android:inputType="textEmailAddress"
+        android:inputType="text"
         app:layout_constraintBottom_toTopOf="@+id/et_pass"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -88,6 +88,6 @@
         app:layout_constraintBottom_toTopOf="@+id/et_pass"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.164"
-        app:layout_constraintStart_toEndOf="@+id/et_id" />
+        app:layout_constraintStart_toEndOf="@+id/et_name" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
