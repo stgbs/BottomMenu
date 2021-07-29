@@ -1,30 +1,60 @@
 package com.anroid.bottommenu
 
-import androidx.appcompat.app.AppCompatActivity
+import android.database.Cursor
+import android.database.sqlite.SQLiteDatabase
+import android.database.sqlite.SQLiteOpenHelper
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.os.Bundle
+import android.os.Parcelable
+import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
+
 class ForumActivity : AppCompatActivity() {
+    private var width: Int = 0
+    private var height: Int = 0
+
     private lateinit var title: String
+
     lateinit var Title_TextView: TextView
+    lateinit var imageView: ImageView
     lateinit var forumList: List<Forum>
     lateinit var adapter: ForumExpandableAdapter
+
     lateinit var myHelper: DBHelper
+    lateinit var sqlDB: SQLiteDatabase
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_forum)
 
-        myHelper = DBHelper(this, "WIKI", null, 1)
+        Title_TextView = findViewById<TextView>(R.id.Title_TextView)
+        imageView = findViewById<ImageView>(R.id.image)
+
+        myHelper = DBHelper(this, "CONTENT", null, 1)
         if(intent.hasExtra("title")) {
             title = intent.getStringExtra("title").toString()
-            // title = intent.getStringExtra("title").toString() 장르 등 설명 부분
         }
 
-        Title_TextView = findViewById<TextView>(R.id.Title_TextView)
         Title_TextView.setText(title)
+
+        sqlDB = myHelper.readableDatabase
+        var cursor: Cursor = sqlDB.rawQuery("SELECT image, genre, description FROM CONTENT WHERE title = '$title';", null)
+
+        while (cursor.moveToNext()){
+            var image = cursor.getBlob(0) // image
+            var genre = cursor.getString(1) // genre
+            var description = cursor.getString(2) // description
+
+            imageView.setImageBitmap(BitmapFactory.decodeByteArray(image, 0, image.size))
+        }
+
+
+        myHelper = DBHelper(this, "WIKI", null, 1)
 
         val recyclerView = findViewById<RecyclerView>(R.id.forum_recyclerView)
         val contentArr = myHelper.wiki(title)

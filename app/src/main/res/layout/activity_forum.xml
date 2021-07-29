@@ -17,10 +17,11 @@
         <ImageView
             android:id="@+id/image"
             android:layout_width="125dp"
-            android:layout_height="125dp"
+            android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:scaleType="fitXY"
             android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
             android:src="@drawable/image" />
 
         <LinearLayout
