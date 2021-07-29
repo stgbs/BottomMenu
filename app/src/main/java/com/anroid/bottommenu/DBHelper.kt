@@ -103,11 +103,30 @@ class DBHelper(
     }
 
     // cartegory나 분류 성격에 따라 select 하도록 변경
-    fun selectAll(): ArrayList<Content> {
+    fun NEW_Select(category: String): ArrayList<Content> {
         var db: SQLiteDatabase = readableDatabase
         val contentList: ArrayList<Content> = ArrayList<Content>()
         try {
-            val cursor: Cursor = db!!.rawQuery("SELECT * FROM CONTENT", null)
+            val cursor: Cursor = db!!.rawQuery("SELECT * FROM CONTENT WHERE category = '$category' ORDER BY date DESC;", null)
+            var count = 0
+            while (cursor.moveToNext() && count <= 10) {
+                count += 1
+                val image = cursor.getBlob(1)
+                val title = cursor.getString(0)
+                val content = Content(image, title)
+                contentList.add(content)
+            }
+        } catch (ex: Exception) {
+            Log.e(ContentValues.TAG, "Exception in executing insert SQL.", ex)
+        }
+        return contentList
+    }
+
+    fun select_all(): ArrayList<Content> {
+        var db: SQLiteDatabase = readableDatabase
+        val contentList: ArrayList<Content> = ArrayList<Content>()
+        try {
+            val cursor: Cursor = db!!.rawQuery("SELECT * FROM CONTENT;", null)
             var count = 0
             while (cursor.moveToNext() && count <= 10) {
                 count += 1

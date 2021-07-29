@@ -16,9 +16,6 @@ import org.w3c.dom.Text
 
 
 class ForumActivity : AppCompatActivity() {
-    private var width: Int = 0
-    private var height: Int = 0
-
     private lateinit var title: String
 
     lateinit var Title_TextView: TextView
