@@ -98,17 +98,17 @@ class HomeFragment : Fragment() {
 
         btn_movie.setOnClickListener {
             val intent = Intent(getActivity(), RankActivity::class.java)
-            intent.putExtra("RankCategory", "MOVIE RANK")
+            intent.putExtra("RankCategory", "MOVIE")
             startActivity(intent)
         }
         btn_book.setOnClickListener {
             val intent = Intent(getActivity(), RankActivity::class.java)
-            intent.putExtra("RankCategory", "BOOK RANK")
+            intent.putExtra("RankCategory", "BOOK")
             startActivity(intent)
         }
         btn_music.setOnClickListener {
             val intent = Intent(getActivity(), RankActivity::class.java)
-            intent.putExtra("RankCategory", "MUSIC RANK")
+            intent.putExtra("RankCategory", "MUSIC")
             startActivity(intent)
         }
 

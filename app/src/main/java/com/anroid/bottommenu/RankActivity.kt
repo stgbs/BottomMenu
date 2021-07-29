@@ -37,31 +37,30 @@ class RankActivity : AppCompatActivity() {
 
         if(intent.hasExtra("RankCategory")) {
             category = intent.getStringExtra("RankCategory").toString()
-            textView_Rank.text = category
+            textView_Rank.text = category + " RANK"
 
-            if(category == "MOVIE RANK"){
+            when(category){
+                "MOVIE" -> {
+                    var movieList = myHelper.ContentRank(Flag, category)
+                    val Adapter = rankingAdapter(this, movieList)
+                    listView.adapter = Adapter
 
-                var movieList = myHelper.MovieRank(Flag)
-                val Adapter = rankingAdapter(this, movieList)
-                listView.adapter = Adapter
+                    RankbtnPress(movieList, category)
+                }
+                "BOOK" -> {
+                    var bookList = myHelper.ContentRank(Flag, category)
+                    val Adapter = rankingAdapter(this, bookList)
+                    listView.adapter = Adapter
 
-                RankbtnPress(movieList)
+                    RankbtnPress(bookList, category)
+                }
+                "MUSIC" -> {
+                    var musicList = myHelper.ContentRank(Flag, category)
+                    val Adapter = rankingAdapter(this, musicList)
+                    listView.adapter = Adapter
 
-            }else if(category == "BOOK RANK"){
-
-                var bookList = myHelper.BookRank(Flag)
-                val Adapter = rankingAdapter(this, bookList)
-                listView.adapter = Adapter
-
-                RankbtnPress(bookList)
-
-            }else if(category == "MUSIC RANK"){
-
-                var musicList = myHelper.MusicRank(Flag)
-                val Adapter = rankingAdapter(this, musicList)
-                listView.adapter = Adapter
-
-                RankbtnPress(musicList)
+                    RankbtnPress(musicList, category)
+                }
             }
         }
 
@@ -70,14 +69,14 @@ class RankActivity : AppCompatActivity() {
         }
     }
 
-    fun RankbtnPress(contentList: ArrayList<rankContent>) {
+    fun RankbtnPress(contentList: ArrayList<rankContent>, category: String) {
         btn_popularity.setOnClickListener {
             Flag = "popularity"
             btn_popularity.setBackgroundColor(this.getResources().getColor(R.color.teal_700))
             btn_rating.setBackgroundColor(this.getResources().getColor(R.color.teal_200))
             btn_random.setBackgroundColor(this.getResources().getColor(R.color.teal_200))
 
-            var contentList = myHelper.MusicRank(Flag)
+            var contentList = myHelper.ContentRank(Flag, category)
             val Adapter = rankingAdapter(this, contentList)
             listView.adapter = Adapter
         }
@@ -87,7 +86,7 @@ class RankActivity : AppCompatActivity() {
             btn_rating.setBackgroundColor(this.getResources().getColor(R.color.teal_700))
             btn_random.setBackgroundColor(this.getResources().getColor(R.color.teal_200))
 
-            var contentList = myHelper.MusicRank(Flag)
+            var contentList = myHelper.ContentRank(Flag, category)
             val Adapter = rankingAdapter(this, contentList)
             listView.adapter = Adapter
         }
@@ -97,7 +96,7 @@ class RankActivity : AppCompatActivity() {
             btn_rating.setBackgroundColor(this.getResources().getColor(R.color.teal_200))
             btn_random.setBackgroundColor(this.getResources().getColor(R.color.teal_700))
 
-            var contentList = myHelper.MusicRank(Flag)
+            var contentList = myHelper.ContentRank(Flag, category)
             val Adapter = rankingAdapter(this, contentList)
             listView.adapter = Adapter
         }

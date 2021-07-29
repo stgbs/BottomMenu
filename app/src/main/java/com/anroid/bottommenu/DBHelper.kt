@@ -122,165 +122,165 @@ class DBHelper(
         return contentList
     }
 
-    fun MovieRank(flag: String): ArrayList<rankContent> {
-        var db: SQLiteDatabase = readableDatabase
-        val movieList: ArrayList<rankContent> = ArrayList<rankContent>()
-        val cursor: Cursor
-        try {
-            // Movie category only
-                when(flag){
-                    "random" -> {
-                        cursor = db!!.rawQuery("SELECT * FROM CONTENT ORDER BY random();", null)
-
-                        var rank = 0
-                        while (cursor.moveToNext()) {
-                            rank = rank + 1
-                            val title = cursor.getString(0)
-                            val image = cursor.getBlob(1)
-                            val description = cursor.getString(4)
-                            val content = rankContent(rank, title, image, description)
-                            movieList.add(content)
-                        }
-                    }
-                    "popularity" -> {
-                        cursor = db!!.rawQuery("SELECT * FROM CONTENT ORDER BY reviewNum DESC;", null)
-
-                        var rank = 0
-                        while (cursor.moveToNext()) {
-                            rank = rank + 1
-                            val title = cursor.getString(0)
-                            val image = cursor.getBlob(1)
-                            val description = cursor.getString(4)
-                            val content = rankContent(rank, title, image, description)
-                            movieList.add(content)
-                        }
-                    }
-                    "rating" -> {
-                        cursor = db!!.rawQuery("SELECT * FROM CONTENT ORDER BY rating DESC;", null)
-
-                        var rank = 0
-                        while (cursor.moveToNext()) {
-                            rank = rank + 1
-                            val title = cursor.getString(0)
-                            val image = cursor.getBlob(1)
-                            val description = cursor.getString(4)
-                            val content = rankContent(rank, title, image, description)
-                            movieList.add(content)
-                        }
-                    }
-                }
-        } catch (ex: Exception) {
-            Log.e(ContentValues.TAG, "Exception in executing insert SQL.", ex)
-        }
-
-        return movieList
-    }
-
-    fun MusicRank(flag: String): ArrayList<rankContent> {
-        var db: SQLiteDatabase = readableDatabase
-        val musicList: ArrayList<rankContent> = ArrayList<rankContent>()
-        val cursor: Cursor
-        try {
-            // Music category only
-                when(flag){
-                    "random" -> {
-                        cursor = db!!.rawQuery("SELECT * FROM CONTENT ORDER BY random();", null)
-
-                        var rank = 0
-                        while (cursor.moveToNext()) {
-                            rank = rank + 1
-                            val title = cursor.getString(0)
-                            val image = cursor.getBlob(1)
-                            val description = cursor.getString(4)
-                            val content = rankContent(rank, title, image, description)
-                            musicList.add(content)
-                        }
-                    }
-                    "popularity" -> {
-                        cursor = db!!.rawQuery("SELECT * FROM CONTENT ORDER BY reviewNum DESC;", null)
-
-                        var rank = 0
-                        while (cursor.moveToNext()) {
-                            rank = rank + 1
-                            val title = cursor.getString(0)
-                            val image = cursor.getBlob(1)
-                            val description = cursor.getString(4)
-                            val content = rankContent(rank, title, image, description)
-                            musicList.add(content)
-                        }
-                    }
-                    "rating" -> {
-                        cursor = db!!.rawQuery("SELECT * FROM CONTENT ORDER BY rating DESC;", null)
-
-                        var rank = 0
-                        while (cursor.moveToNext()) {
-                            rank = rank + 1
-                            val title = cursor.getString(0)
-                            val image = cursor.getBlob(1)
-                            val description = cursor.getString(4)
-                            val content = rankContent(rank, title, image, description)
-                            musicList.add(content)
-                        }
-                    }
-                }
-        } catch (ex: Exception) {
-            Log.e(ContentValues.TAG, "Exception in executing insert SQL.", ex)
-        }
-        return musicList
-    }
-
-    fun BookRank(flag: String): ArrayList<rankContent> {
-        var db: SQLiteDatabase = readableDatabase
-        val bookList: ArrayList<rankContent> = ArrayList<rankContent>()
-        val cursor: Cursor
-        try {
-            // Book category only
-                when(flag){
-                    "random" -> {
-                        cursor = db!!.rawQuery("SELECT * FROM CONTENT ORDER BY random();", null)
-
-                        var rank = 0
-                        while (cursor.moveToNext()) {
-                            rank = rank + 1
-                            val title = cursor.getString(0)
-                            val image = cursor.getBlob(1)
-                            val description = cursor.getString(4)
-                            val content = rankContent(rank, title, image, description)
-                            bookList.add(content)
-                        }
-                    }
-                    "popularity" -> {
-                        cursor = db!!.rawQuery("SELECT * FROM CONTENT ORDER BY reviewNum DESC;", null)
-
-                        var rank = 0
-                        while (cursor.moveToNext()) {
-                            rank = rank + 1
-                            val title = cursor.getString(0)
-                            val image = cursor.getBlob(1)
-                            val description = cursor.getString(4)
-                            val content = rankContent(rank, title, image, description)
-                            bookList.add(content)
-                        }
-                    }
-                    "rating" -> {
-                        cursor = db!!.rawQuery("SELECT * FROM CONTENT ORDER BY rating DESC;", null)
-
-                        var rank = 0
-                        while (cursor.moveToNext()) {
-                            rank = rank + 1
-                            val title = cursor.getString(0)
-                            val image = cursor.getBlob(1)
-                            val description = cursor.getString(4)
-                            val content = rankContent(rank, title, image, description)
-                            bookList.add(content)
-                        }
-                    }
-                }
-        } catch (ex: Exception) {
-            Log.e(ContentValues.TAG, "Exception in executing insert SQL.", ex)
-        }
-        return bookList
-    }
+//    fun MovieRank(flag: String): ArrayList<rankContent> {
+//        var db: SQLiteDatabase = readableDatabase
+//        val movieList: ArrayList<rankContent> = ArrayList<rankContent>()
+//        val cursor: Cursor
+//        try {
+//            // Movie category only
+//                when(flag){
+//                    "random" -> {
+//                        cursor = db!!.rawQuery("SELECT * FROM CONTENT WHERE category = 'MOVIE' ORDER BY random();", null)
+//
+//                        var rank = 0
+//                        while (cursor.moveToNext()) {
+//                            rank = rank + 1
+//                            val title = cursor.getString(0)
+//                            val image = cursor.getBlob(1)
+//                            val description = cursor.getString(4)
+//                            val content = rankContent(rank, title, image, description)
+//                            movieList.add(content)
+//                        }
+//                    }
+//                    "popularity" -> {
+//                        cursor = db!!.rawQuery("SELECT * FROM CONTENT WHERE category = 'MOVIE' ORDER BY reviewNum DESC;", null)
+//
+//                        var rank = 0
+//                        while (cursor.moveToNext()) {
+//                            rank = rank + 1
+//                            val title = cursor.getString(0)
+//                            val image = cursor.getBlob(1)
+//                            val description = cursor.getString(4)
+//                            val content = rankContent(rank, title, image, description)
+//                            movieList.add(content)
+//                        }
+//                    }
+//                    "rating" -> {
+//                        cursor = db!!.rawQuery("SELECT * FROM CONTENT WHERE category = 'MOVIE' ORDER BY rating DESC;", null)
+//
+//                        var rank = 0
+//                        while (cursor.moveToNext()) {
+//                            rank = rank + 1
+//                            val title = cursor.getString(0)
+//                            val image = cursor.getBlob(1)
+//                            val description = cursor.getString(4)
+//                            val content = rankContent(rank, title, image, description)
+//                            movieList.add(content)
+//                        }
+//                    }
+//                }
+//        } catch (ex: Exception) {
+//            Log.e(ContentValues.TAG, "Exception in executing insert SQL.", ex)
+//        }
+//
+//        return movieList
+//    }
+//
+//    fun MusicRank(flag: String): ArrayList<rankContent> {
+//        var db: SQLiteDatabase = readableDatabase
+//        val musicList: ArrayList<rankContent> = ArrayList<rankContent>()
+//        val cursor: Cursor
+//        try {
+//            // Music category only
+//                when(flag){
+//                    "random" -> {
+//                        cursor = db!!.rawQuery("SELECT * FROM CONTENT WHERE category = 'MUSIC' ORDER BY random();", null)
+//
+//                        var rank = 0
+//                        while (cursor.moveToNext()) {
+//                            rank = rank + 1
+//                            val title = cursor.getString(0)
+//                            val image = cursor.getBlob(1)
+//                            val description = cursor.getString(4)
+//                            val content = rankContent(rank, title, image, description)
+//                            musicList.add(content)
+//                        }
+//                    }
+//                    "popularity" -> {
+//                        cursor = db!!.rawQuery("SELECT * FROM CONTENT WHERE category = 'MUSIC' ORDER BY reviewNum DESC;", null)
+//
+//                        var rank = 0
+//                        while (cursor.moveToNext()) {
+//                            rank = rank + 1
+//                            val title = cursor.getString(0)
+//                            val image = cursor.getBlob(1)
+//                            val description = cursor.getString(4)
+//                            val content = rankContent(rank, title, image, description)
+//                            musicList.add(content)
+//                        }
+//                    }
+//                    "rating" -> {
+//                        cursor = db!!.rawQuery("SELECT * FROM CONTENT WHERE category = 'MUSIC' ORDER BY rating DESC;", null)
+//
+//                        var rank = 0
+//                        while (cursor.moveToNext()) {
+//                            rank = rank + 1
+//                            val title = cursor.getString(0)
+//                            val image = cursor.getBlob(1)
+//                            val description = cursor.getString(4)
+//                            val content = rankContent(rank, title, image, description)
+//                            musicList.add(content)
+//                        }
+//                    }
+//                }
+//        } catch (ex: Exception) {
+//            Log.e(ContentValues.TAG, "Exception in executing insert SQL.", ex)
+//        }
+//        return musicList
+//    }
+//
+//    fun BookRank(flag: String): ArrayList<rankContent> {
+//        var db: SQLiteDatabase = readableDatabase
+//        val bookList: ArrayList<rankContent> = ArrayList<rankContent>()
+//        val cursor: Cursor
+//        try {
+//            // Book category only
+//                when(flag){
+//                    "random" -> {
+//                        cursor = db!!.rawQuery("SELECT * FROM CONTENT WHERE category = 'BOOK' ORDER BY random();", null)
+//
+//                        var rank = 0
+//                        while (cursor.moveToNext()) {
+//                            rank = rank + 1
+//                            val title = cursor.getString(0)
+//                            val image = cursor.getBlob(1)
+//                            val description = cursor.getString(4)
+//                            val content = rankContent(rank, title, image, description)
+//                            bookList.add(content)
+//                        }
+//                    }
+//                    "popularity" -> {
+//                        cursor = db!!.rawQuery("SELECT * FROM CONTENT WHERE category = 'BOOK' ORDER BY reviewNum DESC;", null)
+//
+//                        var rank = 0
+//                        while (cursor.moveToNext()) {
+//                            rank = rank + 1
+//                            val title = cursor.getString(0)
+//                            val image = cursor.getBlob(1)
+//                            val description = cursor.getString(4)
+//                            val content = rankContent(rank, title, image, description)
+//                            bookList.add(content)
+//                        }
+//                    }
+//                    "rating" -> {
+//                        cursor = db!!.rawQuery("SELECT * FROM CONTENT WHERE category = 'BOOK' ORDER BY rating DESC;", null)
+//
+//                        var rank = 0
+//                        while (cursor.moveToNext()) {
+//                            rank = rank + 1
+//                            val title = cursor.getString(0)
+//                            val image = cursor.getBlob(1)
+//                            val description = cursor.getString(4)
+//                            val content = rankContent(rank, title, image, description)
+//                            bookList.add(content)
+//                        }
+//                    }
+//                }
+//        } catch (ex: Exception) {
+//            Log.e(ContentValues.TAG, "Exception in executing insert SQL.", ex)
+//        }
+//        return bookList
+//    }
 
     fun wiki(title: String): ArrayList<String>{
         var db: SQLiteDatabase = readableDatabase
@@ -311,5 +311,58 @@ class DBHelper(
             else -> false
         }
         db.close()
+    }
+
+    fun ContentRank(flag: String, category: String): ArrayList<rankContent> {
+        var db: SQLiteDatabase = readableDatabase
+        val contentList: ArrayList<rankContent> = ArrayList<rankContent>()
+        val cursor: Cursor
+        try {
+            // Book category only
+            when(flag){
+                "random" -> {
+                    cursor = db!!.rawQuery("SELECT * FROM CONTENT WHERE category = '$category' ORDER BY random();", null)
+
+                    var rank = 0
+                    while (cursor.moveToNext()) {
+                        rank = rank + 1
+                        val title = cursor.getString(0)
+                        val image = cursor.getBlob(1)
+                        val description = cursor.getString(4)
+                        val content = rankContent(rank, title, image, description)
+                        contentList.add(content)
+                    }
+                }
+                "popularity" -> {
+                    cursor = db!!.rawQuery("SELECT * FROM CONTENT WHERE category = '$category' ORDER BY reviewNum DESC;", null)
+
+                    var rank = 0
+                    while (cursor.moveToNext()) {
+                        rank = rank + 1
+                        val title = cursor.getString(0)
+                        val image = cursor.getBlob(1)
+                        val description = cursor.getString(4)
+                        val content = rankContent(rank, title, image, description)
+                        contentList.add(content)
+                    }
+                }
+                "rating" -> {
+                    cursor = db!!.rawQuery("SELECT * FROM CONTENT WHERE category = '$category' ORDER BY rating DESC;", null)
+
+                    var rank = 0
+                    while (cursor.moveToNext()) {
+                        rank = rank + 1
+                        val title = cursor.getString(0)
+                        val image = cursor.getBlob(1)
+                        val description = cursor.getString(4)
+                        val content = rankContent(rank, title, image, description)
+                        contentList.add(content)
+                    }
+                }
+            }
+        } catch (ex: Exception) {
+            Log.e(ContentValues.TAG, "Exception in executing insert SQL.", ex)
+        }
+        return contentList
     }
 }
