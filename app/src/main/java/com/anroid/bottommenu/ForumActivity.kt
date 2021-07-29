@@ -34,7 +34,7 @@ class ForumActivity : AppCompatActivity() {
 
         recyclerView.setHasFixedSize(true)
         recyclerView.layoutManager = LinearLayoutManager(this)
-        adapter = ForumExpandableAdapter(forumList)
+        adapter = ForumExpandableAdapter(forumList, title)
         recyclerView.adapter = adapter
 
         myHelper.close()

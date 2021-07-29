@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.recyclerview.widget.RecyclerView
 
-class ForumExpandableAdapter(private val forumList: List<Forum>) : RecyclerView.Adapter<ForumExpandableAdapter.viewHolder>(){
+class ForumExpandableAdapter(private val forumList: List<Forum>, private val title: String) : RecyclerView.Adapter<ForumExpandableAdapter.viewHolder>(){
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -17,7 +17,7 @@ class ForumExpandableAdapter(private val forumList: List<Forum>) : RecyclerView.
                 R.layout.item_forum,
                 parent,
                 false
-            )
+            ), title
         )
     }
 
@@ -29,7 +29,7 @@ class ForumExpandableAdapter(private val forumList: List<Forum>) : RecyclerView.
         return forumList.size
     }
 
-    class viewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class viewHolder(itemView: View, private val title: String) : RecyclerView.ViewHolder(itemView) {
         lateinit var myHelper : DBHelper
         fun bind(forum: Forum) {
             val category = itemView.findViewById<TextView>(R.id.text_Category)
@@ -38,14 +38,8 @@ class ForumExpandableAdapter(private val forumList: List<Forum>) : RecyclerView.
             val text_content = itemView.findViewById<TextView>(R.id.content_forum)
             val edit_content = itemView.findViewById<EditText>(R.id.edit_content_forum)
             val btn_save = itemView.findViewById<Button>(R.id.btn_save)
-            var title = ""
 
             myHelper = DBHelper(itemView.getContext(), "WIKI", null, 1)
-
-            var intent = Intent()
-            if(intent.hasExtra("title")) {
-                title = intent.getStringExtra("title").toString()
-            }
 
             category.text = forum.category
             text_content.text = forum.content
@@ -74,6 +68,7 @@ class ForumExpandableAdapter(private val forumList: List<Forum>) : RecyclerView.
                 var update_text = edit_content.getText().toString();
                 val itemPosition = getAdapterPosition()
                 myHelper.updateWIKI(update_text, title, itemPosition)
+                Toast.makeText(itemView.getContext(), "저장되었습니다", Toast.LENGTH_SHORT).show()
 
                 text_content.text = edit_content.text
             }
