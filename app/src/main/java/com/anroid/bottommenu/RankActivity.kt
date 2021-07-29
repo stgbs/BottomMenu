@@ -77,7 +77,6 @@ class RankActivity : AppCompatActivity() {
                 var musicList = myHelper.MusicRank(Flag)
                 val Adapter = rankingAdapter(this, musicList)
                 listView.adapter = Adapter
-
             }
         }
     }
