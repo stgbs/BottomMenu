@@ -33,28 +33,7 @@ class RankActivity : AppCompatActivity() {
         btn_random = findViewById(R.id.btn_random)
         listView = findViewById(R.id.listView)
 
-        btn_Back.setOnClickListener{
-            onBackPressed()
-        }
 
-        btn_popularity.setOnClickListener {
-            Flag = "popularity"
-            btn_popularity.setBackgroundColor(this.getResources().getColor(R.color.teal_700))
-            btn_rating.setBackgroundColor(this.getResources().getColor(R.color.teal_200))
-            btn_random.setBackgroundColor(this.getResources().getColor(R.color.teal_200))
-        }
-        btn_rating.setOnClickListener {
-            Flag = "rating"
-            btn_popularity.setBackgroundColor(this.getResources().getColor(R.color.teal_200))
-            btn_rating.setBackgroundColor(this.getResources().getColor(R.color.teal_700))
-            btn_random.setBackgroundColor(this.getResources().getColor(R.color.teal_200))
-        }
-        btn_random.setOnClickListener {
-            Flag = "random"
-            btn_popularity.setBackgroundColor(this.getResources().getColor(R.color.teal_200))
-            btn_rating.setBackgroundColor(this.getResources().getColor(R.color.teal_200))
-            btn_random.setBackgroundColor(this.getResources().getColor(R.color.teal_700))
-        }
 
         if(intent.hasExtra("RankCategory")) {
             category = intent.getStringExtra("RankCategory").toString()
@@ -66,18 +45,62 @@ class RankActivity : AppCompatActivity() {
                 val Adapter = rankingAdapter(this, movieList)
                 listView.adapter = Adapter
 
+                RankbtnPress(movieList)
+
             }else if(category == "BOOK RANK"){
 
                 var bookList = myHelper.BookRank(Flag)
                 val Adapter = rankingAdapter(this, bookList)
                 listView.adapter = Adapter
 
+                RankbtnPress(bookList)
+
             }else if(category == "MUSIC RANK"){
 
                 var musicList = myHelper.MusicRank(Flag)
                 val Adapter = rankingAdapter(this, musicList)
                 listView.adapter = Adapter
+
+                RankbtnPress(musicList)
             }
         }
+
+        btn_Back.setOnClickListener{
+            onBackPressed()
+        }
+    }
+
+    fun RankbtnPress(contentList: ArrayList<rankContent>) {
+        btn_popularity.setOnClickListener {
+            Flag = "popularity"
+            btn_popularity.setBackgroundColor(this.getResources().getColor(R.color.teal_700))
+            btn_rating.setBackgroundColor(this.getResources().getColor(R.color.teal_200))
+            btn_random.setBackgroundColor(this.getResources().getColor(R.color.teal_200))
+
+            var contentList = myHelper.MusicRank(Flag)
+            val Adapter = rankingAdapter(this, contentList)
+            listView.adapter = Adapter
+        }
+        btn_rating.setOnClickListener {
+            Flag = "rating"
+            btn_popularity.setBackgroundColor(this.getResources().getColor(R.color.teal_200))
+            btn_rating.setBackgroundColor(this.getResources().getColor(R.color.teal_700))
+            btn_random.setBackgroundColor(this.getResources().getColor(R.color.teal_200))
+
+            var contentList = myHelper.MusicRank(Flag)
+            val Adapter = rankingAdapter(this, contentList)
+            listView.adapter = Adapter
+        }
+        btn_random.setOnClickListener {
+            Flag = "random"
+            btn_popularity.setBackgroundColor(this.getResources().getColor(R.color.teal_200))
+            btn_rating.setBackgroundColor(this.getResources().getColor(R.color.teal_200))
+            btn_random.setBackgroundColor(this.getResources().getColor(R.color.teal_700))
+
+            var contentList = myHelper.MusicRank(Flag)
+            val Adapter = rankingAdapter(this, contentList)
+            listView.adapter = Adapter
+        }
+
     }
 }

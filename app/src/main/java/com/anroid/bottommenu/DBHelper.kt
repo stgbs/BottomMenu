@@ -143,7 +143,7 @@ class DBHelper(
                         }
                     }
                     "popularity" -> {
-                        cursor = db!!.rawQuery("SELECT * FROM CONTENT ORDER BY reviewNum;", null)
+                        cursor = db!!.rawQuery("SELECT * FROM CONTENT ORDER BY reviewNum DESC;", null)
 
                         var rank = 0
                         while (cursor.moveToNext()) {
@@ -156,7 +156,7 @@ class DBHelper(
                         }
                     }
                     "rating" -> {
-                        cursor = db!!.rawQuery("SELECT * FROM CONTENT ORDER BY rating;", null)
+                        cursor = db!!.rawQuery("SELECT * FROM CONTENT ORDER BY rating DESC;", null)
 
                         var rank = 0
                         while (cursor.moveToNext()) {
@@ -197,7 +197,7 @@ class DBHelper(
                         }
                     }
                     "popularity" -> {
-                        cursor = db!!.rawQuery("SELECT * FROM CONTENT ORDER BY reviewNum;", null)
+                        cursor = db!!.rawQuery("SELECT * FROM CONTENT ORDER BY reviewNum DESC;", null)
 
                         var rank = 0
                         while (cursor.moveToNext()) {
@@ -210,7 +210,7 @@ class DBHelper(
                         }
                     }
                     "rating" -> {
-                        cursor = db!!.rawQuery("SELECT * FROM CONTENT ORDER BY rating;", null)
+                        cursor = db!!.rawQuery("SELECT * FROM CONTENT ORDER BY rating DESC;", null)
 
                         var rank = 0
                         while (cursor.moveToNext()) {
@@ -250,7 +250,7 @@ class DBHelper(
                         }
                     }
                     "popularity" -> {
-                        cursor = db!!.rawQuery("SELECT * FROM CONTENT ORDER BY reviewNum;", null)
+                        cursor = db!!.rawQuery("SELECT * FROM CONTENT ORDER BY reviewNum DESC;", null)
 
                         var rank = 0
                         while (cursor.moveToNext()) {
@@ -263,7 +263,7 @@ class DBHelper(
                         }
                     }
                     "rating" -> {
-                        cursor = db!!.rawQuery("SELECT * FROM CONTENT ORDER BY rating;", null)
+                        cursor = db!!.rawQuery("SELECT * FROM CONTENT ORDER BY rating DESC;", null)
 
                         var rank = 0
                         while (cursor.moveToNext()) {
