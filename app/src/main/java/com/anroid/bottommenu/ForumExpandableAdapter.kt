@@ -1,5 +1,6 @@
 package com.anroid.bottommenu
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,6 +24,7 @@ class ForumExpandableAdapter (private val forumList: List<Forum>) : RecyclerView
     }
 
     class viewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        lateinit var myHelper : DBHelper
         fun bind(forum: Forum) {
             val category = itemView.findViewById<TextView>(R.id.text_Category)
             val btnMore = itemView.findViewById<ImageButton>(R.id.btn_more)
@@ -30,14 +32,24 @@ class ForumExpandableAdapter (private val forumList: List<Forum>) : RecyclerView
             val text_content = itemView.findViewById<TextView>(R.id.content_forum)
             val edit_content = itemView.findViewById<EditText>(R.id.edit_content_forum)
             val btn_save = itemView.findViewById<Button>(R.id.btn_save)
+            var title = ""
+
+            myHelper = DBHelper(itemView.getContext(), "WIKI", null, 1)
+
+            var intent = Intent()
+            if(intent.hasExtra("title")) {
+                title = intent.getStringExtra("title").toString()
+            }
 
             category.text = forum.category
+            text_content.text = forum.content
+            edit_content.setText(forum.content)
 
             btnMore.setOnClickListener {
                 val show = toggleLayout(!forum.isExpanded, it, layoutExpand)
                 forum.isExpanded = show
             }
-            
+
             text_content.setOnClickListener{
                 Toast.makeText(itemView.getContext(), "텍스트를 길게 눌러 내용을 추가하세요!", Toast.LENGTH_SHORT).show()
             }
@@ -52,8 +64,10 @@ class ForumExpandableAdapter (private val forumList: List<Forum>) : RecyclerView
                 text_content.visibility = View.VISIBLE
                 edit_content.visibility = View.GONE
                 btn_save.visibility = View.GONE
-            }
 
+                var update_text = edit_content.getText().toString();
+                myHelper.updateWIKI(update_text, title)
+            }
         }
 
         private fun toggleLayout(isExpanded: Boolean, view: View, layoutExpand: LinearLayout): Boolean {

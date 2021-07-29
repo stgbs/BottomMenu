@@ -60,7 +60,7 @@
             android:layout_margin="15dp"
             android:visibility="visible"
             android:textSize="12sp"
-            android:text="@string/lorem"/>
+            android:text="text"/>
 
         <EditText
             android:id="@+id/edit_content_forum"
