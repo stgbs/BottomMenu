@@ -311,7 +311,6 @@ class DBHelper(
             3 -> db!!.execSQL("UPDATE WIKI SET content_4 = '$update_text' WHERE title = '$title';")
             else -> false
         }
-
         db.close()
     }
 }

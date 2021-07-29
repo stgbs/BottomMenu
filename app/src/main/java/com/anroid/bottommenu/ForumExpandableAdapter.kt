@@ -8,7 +8,6 @@ import android.widget.*
 import androidx.recyclerview.widget.RecyclerView
 
 class ForumExpandableAdapter(private val forumList: List<Forum>) : RecyclerView.Adapter<ForumExpandableAdapter.viewHolder>(){
-
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -78,6 +77,8 @@ class ForumExpandableAdapter(private val forumList: List<Forum>) : RecyclerView.
 
                 text_content.text = edit_content.text
             }
+
+            myHelper.close()
         }
 
         private fun toggleLayout(isExpanded: Boolean, view: View, layoutExpand: LinearLayout): Boolean {

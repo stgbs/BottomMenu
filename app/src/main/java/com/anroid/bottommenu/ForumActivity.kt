@@ -36,6 +36,8 @@ class ForumActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
         adapter = ForumExpandableAdapter(forumList)
         recyclerView.adapter = adapter
+
+        myHelper.close()
     }
 
     private fun loadData(contentArray: ArrayList<String>): List<Forum> {
