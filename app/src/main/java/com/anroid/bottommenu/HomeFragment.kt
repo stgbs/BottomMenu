@@ -113,6 +113,7 @@ class HomeFragment : Fragment() {
             startActivity(intent)
         }
 
+        myHelper.close()
         return view
     }
 }

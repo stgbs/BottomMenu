@@ -33,8 +33,6 @@ class RankActivity : AppCompatActivity() {
         btn_random = findViewById(R.id.btn_random)
         listView = findViewById(R.id.listView)
 
-
-
         if(intent.hasExtra("RankCategory")) {
             category = intent.getStringExtra("RankCategory").toString()
             textView_Rank.text = category + " RANK"
@@ -67,6 +65,8 @@ class RankActivity : AppCompatActivity() {
         btn_Back.setOnClickListener{
             onBackPressed()
         }
+
+        myHelper.close()
     }
 
     fun RankbtnPress(contentList: ArrayList<rankContent>, category: String) {

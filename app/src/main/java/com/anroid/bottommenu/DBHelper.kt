@@ -102,12 +102,11 @@ class DBHelper(
         return false
     }
 
-    // cartegory나 분류 성격에 따라 select 하도록 변경
     fun NEW_Select(category: String): ArrayList<Content> {
         var db: SQLiteDatabase = readableDatabase
         val contentList: ArrayList<Content> = ArrayList<Content>()
         try {
-            val cursor: Cursor = db!!.rawQuery("SELECT * FROM CONTENT WHERE category = '$category' ORDER BY date DESC;", null)
+            val cursor: Cursor = db!!.rawQuery("SELECT * FROM CONTENT WHERE category = '$category' ORDER BY date DESC", null)
             var count = 0
             while (cursor.moveToNext() && count <= 10) {
                 count += 1
@@ -119,6 +118,7 @@ class DBHelper(
         } catch (ex: Exception) {
             Log.e(ContentValues.TAG, "Exception in executing insert SQL.", ex)
         }
+        db.close()
         return contentList
     }
 
@@ -138,7 +138,17 @@ class DBHelper(
         } catch (ex: Exception) {
             Log.e(ContentValues.TAG, "Exception in executing insert SQL.", ex)
         }
+        db.close()
         return contentList
+    }
+
+    fun WIKI_init(title: String){
+        var db: SQLiteDatabase = writableDatabase
+            db!!.execSQL("UPDATE WIKI SET content_1 = '' WHERE title = '$title';")
+            db!!.execSQL("UPDATE WIKI SET content_2 = '' WHERE title = '$title';")
+            db!!.execSQL("UPDATE WIKI SET content_3 = '' WHERE title = '$title';")
+            db!!.execSQL("UPDATE WIKI SET content_4 = '' WHERE title = '$title';")
+            db.close()
     }
 
     fun WIKI_Select(title: String): ArrayList<String>{
@@ -157,6 +167,7 @@ class DBHelper(
         } catch (ex: Exception) {
             Log.e(ContentValues.TAG, "Exception in executing insert SQL.", ex)
         }
+        db.close()
         return forumList
     }
 
@@ -222,6 +233,7 @@ class DBHelper(
         } catch (ex: Exception) {
             Log.e(ContentValues.TAG, "Exception in executing insert SQL.", ex)
         }
+        db.close()
         return contentList
     }
 
