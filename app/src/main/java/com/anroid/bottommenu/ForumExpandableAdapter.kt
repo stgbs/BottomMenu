@@ -7,12 +7,19 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.recyclerview.widget.RecyclerView
 
-class ForumExpandableAdapter (private val forumList: List<Forum>) : RecyclerView.Adapter<ForumExpandableAdapter.viewHolder>(){
+class ForumExpandableAdapter(private val forumList: List<Forum>) : RecyclerView.Adapter<ForumExpandableAdapter.viewHolder>(){
+
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
     ): ForumExpandableAdapter.viewHolder {
-        return viewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_forum, parent, false))
+        return viewHolder(
+            LayoutInflater.from(parent.context).inflate(
+                R.layout.item_forum,
+                parent,
+                false
+            )
+        )
     }
 
     override fun onBindViewHolder(holder: ForumExpandableAdapter.viewHolder, position: Int) {
@@ -66,7 +73,10 @@ class ForumExpandableAdapter (private val forumList: List<Forum>) : RecyclerView
                 btn_save.visibility = View.GONE
 
                 var update_text = edit_content.getText().toString();
-                myHelper.updateWIKI(update_text, title)
+                val itemPosition = getAdapterPosition()
+                myHelper.updateWIKI(update_text, title, itemPosition)
+
+                text_content.text = edit_content.text
             }
         }
 

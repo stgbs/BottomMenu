@@ -129,44 +129,47 @@ class DBHelper(
         val cursor: Cursor
         try {
             // Movie category only
-            if(flag == "random"){
-                cursor = db!!.rawQuery("SELECT * FROM CONTENT ORDER BY random()", null)
+                when(flag){
+                    "random" -> {
+                        cursor = db!!.rawQuery("SELECT * FROM CONTENT ORDER BY random()", null)
 
-                var rank = 0
-                while (cursor.moveToNext() || rank <= 10) {
-                    rank = rank + 1
-                    val image = R.drawable.image
-                    val title = cursor.getString(1)
-                    val description = ""
-                    val content = rankContent(rank, image, title, description)
-                    movieList.add(content)
+                        var rank = 0
+                        while (cursor.moveToNext() || rank <= 10) {
+                            rank = rank + 1
+                            val image = R.drawable.image
+                            val title = cursor.getString(1)
+                            val description = ""
+                            val content = rankContent(rank, image, title, description)
+                            movieList.add(content)
+                        }
+                    }
+                    "popularity" -> {
+                        cursor = db!!.rawQuery("SELECT * FROM CONTENT ORDER BY random()", null)
+
+                        var rank = 0
+                        while (cursor.moveToNext() || rank <= 10) {
+                            rank = rank + 1
+                            val image = R.drawable.image
+                            val title = cursor.getString(1)
+                            val description = ""
+                            val content = rankContent(rank, image, title, description)
+                            movieList.add(content)
+                        }
+                    }
+                    "rating" -> {
+                        cursor = db!!.rawQuery("SELECT * FROM CONTENT ORDER BY random()", null)
+
+                        var rank = 0
+                        while (cursor.moveToNext() || rank <= 10) {
+                            rank = rank + 1
+                            val image = R.drawable.image
+                            val title = cursor.getString(1)
+                            val description = ""
+                            val content = rankContent(rank, image, title, description)
+                            movieList.add(content)
+                        }
+                    }
                 }
-            }else if(flag == "popularity"){
-                cursor = db!!.rawQuery("SELECT * FROM CONTENT ORDER BY random()", null)
-
-                var rank = 0
-                while (cursor.moveToNext() || rank <= 10) {
-                    rank = rank + 1
-                    val image = R.drawable.image
-                    val title = cursor.getString(1)
-                    val description = ""
-                    val content = rankContent(rank, image, title, description)
-                    movieList.add(content)
-                }
-            }else if(flag == "rating"){
-                cursor = db!!.rawQuery("SELECT * FROM CONTENT ORDER BY random()", null)
-
-                var rank = 0
-                while (cursor.moveToNext() || rank <= 10) {
-                    rank = rank + 1
-                    val image = R.drawable.image
-                    val title = cursor.getString(1)
-                    val description = ""
-                    val content = rankContent(rank, image, title, description)
-                    movieList.add(content)
-                }
-            }
-
         } catch (ex: Exception) {
             Log.e(ContentValues.TAG, "Exception in executing insert SQL.", ex)
         }
@@ -176,104 +179,108 @@ class DBHelper(
 
     fun MusicRank(flag: String): ArrayList<rankContent> {
         var db: SQLiteDatabase = readableDatabase
-        val movieList: ArrayList<rankContent> = ArrayList<rankContent>()
+        val musicList: ArrayList<rankContent> = ArrayList<rankContent>()
         val cursor: Cursor
         try {
             // Music category only
-            if(flag == "random"){
-                cursor = db!!.rawQuery("SELECT * FROM CONTENT ORDER BY random()", null)
+                when(flag){
+                    "random" -> {
+                        cursor = db!!.rawQuery("SELECT * FROM CONTENT ORDER BY random()", null)
 
-                var rank = 0
-                while (cursor.moveToNext() || rank <= 10) {
-                    rank = rank + 1
-                    val image = R.drawable.image
-                    val title = cursor.getString(1)
-                    val description = ""
-                    val content = rankContent(rank, image, title, description)
-                    movieList.add(content)
+                        var rank = 0
+                        while (cursor.moveToNext() || rank <= 10) {
+                            rank = rank + 1
+                            val image = R.drawable.image
+                            val title = cursor.getString(1)
+                            val description = ""
+                            val content = rankContent(rank, image, title, description)
+                            musicList.add(content)
+                        }
+                    }
+                    "popularity" -> {
+                        cursor = db!!.rawQuery("SELECT * FROM CONTENT ORDER BY random()", null)
+
+                        var rank = 0
+                        while (cursor.moveToNext() || rank <= 10) {
+                            rank = rank + 1
+                            val image = R.drawable.image
+                            val title = cursor.getString(1)
+                            val description = ""
+                            val content = rankContent(rank, image, title, description)
+                            musicList.add(content)
+                        }
+                    }
+                    "rating" -> {
+                        cursor = db!!.rawQuery("SELECT * FROM CONTENT ORDER BY random()", null)
+
+                        var rank = 0
+                        while (cursor.moveToNext() || rank <= 10) {
+                            rank = rank + 1
+                            val image = R.drawable.image
+                            val title = cursor.getString(1)
+                            val description = ""
+                            val content = rankContent(rank, image, title, description)
+                            musicList.add(content)
+                        }
+                    }
                 }
-            }else if(flag == "popularity"){
-                cursor = db!!.rawQuery("SELECT * FROM CONTENT ORDER BY random()", null)
-
-                var rank = 0
-                while (cursor.moveToNext() || rank <= 10) {
-                    rank = rank + 1
-                    val image = R.drawable.image
-                    val title = cursor.getString(1)
-                    val description = ""
-                    val content = rankContent(rank, image, title, description)
-                    movieList.add(content)
-                }
-            }else if(flag == "rating"){
-                cursor = db!!.rawQuery("SELECT * FROM CONTENT ORDER BY random()", null)
-
-                var rank = 0
-                while (cursor.moveToNext() || rank <= 10) {
-                    rank = rank + 1
-                    val image = R.drawable.image
-                    val title = cursor.getString(1)
-                    val description = ""
-                    val content = rankContent(rank, image, title, description)
-                    movieList.add(content)
-                }
-            }
-
         } catch (ex: Exception) {
             Log.e(ContentValues.TAG, "Exception in executing insert SQL.", ex)
         }
-
-        return movieList
+        return musicList
     }
 
     fun BookRank(flag: String): ArrayList<rankContent> {
         var db: SQLiteDatabase = readableDatabase
-        val movieList: ArrayList<rankContent> = ArrayList<rankContent>()
+        val bookList: ArrayList<rankContent> = ArrayList<rankContent>()
         val cursor: Cursor
         try {
             // Book category only
-            if(flag == "random"){
-                cursor = db!!.rawQuery("SELECT * FROM CONTENT ORDER BY random()", null)
+                when(flag){
+                    "random" -> {
+                        cursor = db!!.rawQuery("SELECT * FROM CONTENT ORDER BY random()", null)
 
-                var rank = 0
-                while (cursor.moveToNext() || rank <= 10) {
-                    rank = rank + 1
-                    val image = R.drawable.image
-                    val title = cursor.getString(1)
-                    val description = ""
-                    val content = rankContent(rank, image, title, description)
-                    movieList.add(content)
+                        var rank = 0
+                        while (cursor.moveToNext() || rank <= 10) {
+                            rank = rank + 1
+                            val image = R.drawable.image
+                            val title = cursor.getString(1)
+                            val description = ""
+                            val content = rankContent(rank, image, title, description)
+                            bookList.add(content)
+                        }
+                    }
+                    "popularity" -> {
+                        cursor = db!!.rawQuery("SELECT * FROM CONTENT ORDER BY random()", null)
+
+                        var rank = 0
+                        while (cursor.moveToNext() || rank <= 10) {
+                            rank = rank + 1
+                            val image = R.drawable.image
+                            val title = cursor.getString(1)
+                            val description = ""
+                            val content = rankContent(rank, image, title, description)
+                            bookList.add(content)
+                        }
+                    }
+                    "rating" -> {
+                        cursor = db!!.rawQuery("SELECT * FROM CONTENT ORDER BY random()", null)
+
+                        var rank = 0
+                        while (cursor.moveToNext() || rank <= 10) {
+                            rank = rank + 1
+                            val image = R.drawable.image
+                            val title = cursor.getString(1)
+                            val description = ""
+                            val content = rankContent(rank, image, title, description)
+                            bookList.add(content)
+                        }
+                    }
                 }
-            }else if(flag == "popularity"){
-                cursor = db!!.rawQuery("SELECT * FROM CONTENT ORDER BY random()", null)
-
-                var rank = 0
-                while (cursor.moveToNext() || rank <= 10) {
-                    rank = rank + 1
-                    val image = R.drawable.image
-                    val title = cursor.getString(1)
-                    val description = ""
-                    val content = rankContent(rank, image, title, description)
-                    movieList.add(content)
-                }
-            }else if(flag == "rating"){
-                cursor = db!!.rawQuery("SELECT * FROM CONTENT ORDER BY random()", null)
-
-                var rank = 0
-                while (cursor.moveToNext() || rank <= 10) {
-                    rank = rank + 1
-                    val image = R.drawable.image
-                    val title = cursor.getString(1)
-                    val description = ""
-                    val content = rankContent(rank, image, title, description)
-                    movieList.add(content)
-                }
-            }
-
         } catch (ex: Exception) {
             Log.e(ContentValues.TAG, "Exception in executing insert SQL.", ex)
         }
-
-        return movieList
+        return bookList
     }
 
     fun wiki(title: String): ArrayList<String>{
@@ -295,10 +302,16 @@ class DBHelper(
         return forumList
     }
 
-    fun updateWIKI(update_text: String, title: String){
+    fun updateWIKI(update_text: String, title: String, itemPosition: Int){
         var db: SQLiteDatabase = writableDatabase
-        db!!.execSQL("UPDATE WIKI SET content_1 = '$update_text' WHERE title = '$title';")
+        when (itemPosition) {
+            0 -> db!!.execSQL("UPDATE WIKI SET content_1 = '$update_text' WHERE title = '$title';")
+            1 -> db!!.execSQL("UPDATE WIKI SET content_2 = '$update_text' WHERE title = '$title';")
+            2 -> db!!.execSQL("UPDATE WIKI SET content_3 = '$update_text' WHERE title = '$title';")
+            3 -> db!!.execSQL("UPDATE WIKI SET content_4 = '$update_text' WHERE title = '$title';")
+            else -> false
+        }
+
         db.close()
     }
-
 }
