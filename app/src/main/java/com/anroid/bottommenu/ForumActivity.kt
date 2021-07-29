@@ -74,6 +74,8 @@ class ForumActivity : AppCompatActivity() {
         recyclerView.adapter = adapter
 
         myHelper.close()
+        sqlDB.close()
+        cursor.close()
     }
 
     private fun loadData(contentArray: ArrayList<String>): List<Forum> {

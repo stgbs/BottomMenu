@@ -1,6 +1,7 @@
 package com.anroid.bottommenu
 
 import android.content.Context
+import android.graphics.BitmapFactory
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,9 +20,10 @@ class rankingAdapter(val context: Context, val contentList: ArrayList<rankConten
         val Descripton = view.findViewById<TextView>(R.id.description_textView)
 
         val content = contentList[position]
+        val bitmap = BitmapFactory.decodeByteArray(contentList.get(position).Image, 0, contentList.get(position).Image.size)
 
         Rank.text = content.Rank.toString()
-        Image.setImageResource(content.Image)
+        Image.setImageBitmap(bitmap)
         Title.text = content.Title
         Descripton.text = content.description
 

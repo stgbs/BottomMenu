@@ -133,12 +133,12 @@ class DBHelper(
                         cursor = db!!.rawQuery("SELECT * FROM CONTENT ORDER BY random()", null)
 
                         var rank = 0
-                        while (cursor.moveToNext() || rank <= 10) {
+                        while (cursor.moveToNext()) {
                             rank = rank + 1
-                            val image = R.drawable.image
-                            val title = cursor.getString(1)
-                            val description = ""
-                            val content = rankContent(rank, image, title, description)
+                            val title = cursor.getString(0)
+                            val image = cursor.getBlob(1)
+                            val description = cursor.getString(4)
+                            val content = rankContent(rank, title, image, description)
                             movieList.add(content)
                         }
                     }
@@ -146,12 +146,12 @@ class DBHelper(
                         cursor = db!!.rawQuery("SELECT * FROM CONTENT ORDER BY random()", null)
 
                         var rank = 0
-                        while (cursor.moveToNext() || rank <= 10) {
+                        while (cursor.moveToNext()) {
                             rank = rank + 1
-                            val image = R.drawable.image
-                            val title = cursor.getString(1)
-                            val description = ""
-                            val content = rankContent(rank, image, title, description)
+                            val title = cursor.getString(0)
+                            val image = cursor.getBlob(1)
+                            val description = cursor.getString(4)
+                            val content = rankContent(rank, title, image, description)
                             movieList.add(content)
                         }
                     }
@@ -159,12 +159,12 @@ class DBHelper(
                         cursor = db!!.rawQuery("SELECT * FROM CONTENT ORDER BY random()", null)
 
                         var rank = 0
-                        while (cursor.moveToNext() || rank <= 10) {
+                        while (cursor.moveToNext()) {
                             rank = rank + 1
-                            val image = R.drawable.image
-                            val title = cursor.getString(1)
-                            val description = ""
-                            val content = rankContent(rank, image, title, description)
+                            val title = cursor.getString(0)
+                            val image = cursor.getBlob(1)
+                            val description = cursor.getString(4)
+                            val content = rankContent(rank, title, image, description)
                             movieList.add(content)
                         }
                     }
@@ -187,12 +187,12 @@ class DBHelper(
                         cursor = db!!.rawQuery("SELECT * FROM CONTENT ORDER BY random()", null)
 
                         var rank = 0
-                        while (cursor.moveToNext() || rank <= 10) {
+                        while (cursor.moveToNext()) {
                             rank = rank + 1
-                            val image = R.drawable.image
-                            val title = cursor.getString(1)
-                            val description = ""
-                            val content = rankContent(rank, image, title, description)
+                            val title = cursor.getString(0)
+                            val image = cursor.getBlob(1)
+                            val description = cursor.getString(4)
+                            val content = rankContent(rank, title, image, description)
                             musicList.add(content)
                         }
                     }
@@ -200,12 +200,12 @@ class DBHelper(
                         cursor = db!!.rawQuery("SELECT * FROM CONTENT ORDER BY random()", null)
 
                         var rank = 0
-                        while (cursor.moveToNext() || rank <= 10) {
+                        while (cursor.moveToNext()) {
                             rank = rank + 1
-                            val image = R.drawable.image
-                            val title = cursor.getString(1)
-                            val description = ""
-                            val content = rankContent(rank, image, title, description)
+                            val title = cursor.getString(0)
+                            val image = cursor.getBlob(1)
+                            val description = cursor.getString(4)
+                            val content = rankContent(rank, title, image, description)
                             musicList.add(content)
                         }
                     }
@@ -213,12 +213,12 @@ class DBHelper(
                         cursor = db!!.rawQuery("SELECT * FROM CONTENT ORDER BY random()", null)
 
                         var rank = 0
-                        while (cursor.moveToNext() || rank <= 10) {
+                        while (cursor.moveToNext()) {
                             rank = rank + 1
-                            val image = R.drawable.image
-                            val title = cursor.getString(1)
-                            val description = ""
-                            val content = rankContent(rank, image, title, description)
+                            val title = cursor.getString(0)
+                            val image = cursor.getBlob(1)
+                            val description = cursor.getString(4)
+                            val content = rankContent(rank, title, image, description)
                             musicList.add(content)
                         }
                     }
@@ -240,12 +240,12 @@ class DBHelper(
                         cursor = db!!.rawQuery("SELECT * FROM CONTENT ORDER BY random()", null)
 
                         var rank = 0
-                        while (cursor.moveToNext() || rank <= 10) {
+                        while (cursor.moveToNext()) {
                             rank = rank + 1
-                            val image = R.drawable.image
-                            val title = cursor.getString(1)
-                            val description = ""
-                            val content = rankContent(rank, image, title, description)
+                            val title = cursor.getString(0)
+                            val image = cursor.getBlob(1)
+                            val description = cursor.getString(4)
+                            val content = rankContent(rank, title, image, description)
                             bookList.add(content)
                         }
                     }
@@ -253,12 +253,12 @@ class DBHelper(
                         cursor = db!!.rawQuery("SELECT * FROM CONTENT ORDER BY random()", null)
 
                         var rank = 0
-                        while (cursor.moveToNext() || rank <= 10) {
+                        while (cursor.moveToNext()) {
                             rank = rank + 1
-                            val image = R.drawable.image
-                            val title = cursor.getString(1)
-                            val description = ""
-                            val content = rankContent(rank, image, title, description)
+                            val title = cursor.getString(0)
+                            val image = cursor.getBlob(1)
+                            val description = cursor.getString(4)
+                            val content = rankContent(rank, title, image, description)
                             bookList.add(content)
                         }
                     }
@@ -266,12 +266,12 @@ class DBHelper(
                         cursor = db!!.rawQuery("SELECT * FROM CONTENT ORDER BY random()", null)
 
                         var rank = 0
-                        while (cursor.moveToNext() || rank <= 10) {
+                        while (cursor.moveToNext()) {
                             rank = rank + 1
-                            val image = R.drawable.image
-                            val title = cursor.getString(1)
-                            val description = ""
-                            val content = rankContent(rank, image, title, description)
+                            val title = cursor.getString(0)
+                            val image = cursor.getBlob(1)
+                            val description = cursor.getString(4)
+                            val content = rankContent(rank, title, image, description)
                             bookList.add(content)
                         }
                     }
