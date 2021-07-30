@@ -7,8 +7,8 @@
 
     <ImageView
         android:id="@+id/content_Image"
-        android:layout_width="wrap_content"
-        android:layout_height="150dp"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
         android:adjustViewBounds="true"
         android:scaleType="centerCrop"
@@ -22,14 +22,14 @@
 
     <TextView
         android:id="@+id/content_Title"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
-        android:ellipsize="end"
-        android:maxLength="10"
-        android:maxLines="1"
+        android:ellipsize="marquee"
+        android:gravity="center"
         android:text="content_Title"
+        android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.505"
