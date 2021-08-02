@@ -14,7 +14,7 @@ import android.widget.TextView
 
 class ReviewAdapter(val context: Context, val reviewList: List<Review>): BaseAdapter() {
 
-    private val mainActivity = MainActivity.getInstance()
+    private val mainActivity2 = MainActivity2.getInstance()
     private var alias: Int = 0
     private var title: String = ""
     private var reviewContent = ""
@@ -60,7 +60,7 @@ class ReviewAdapter(val context: Context, val reviewList: List<Review>): BaseAda
 
         //이벤트
         rowView.setOnClickListener {
-            mainActivity?.mypageToReview(ReviewFragment(), review_content)
+            mainActivity2?.mypageToReview(ReviewFragment(), review_content)
         }
 
         db.close()

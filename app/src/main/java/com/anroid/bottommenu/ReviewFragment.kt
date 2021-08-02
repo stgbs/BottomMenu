@@ -142,7 +142,7 @@ class ReviewFragment : Fragment() {
                 0 -> db.REVIEW_Insert(title, reviewContent, description, ratingScore, emotion, recommend)
                 else -> db.REVIEW_Update(alias, title, reviewContent, description, ratingScore, emotion, recommend)
             }
-            (activity as MainActivity).reviewToMypage()
+            (activity as MainActivity2).reviewToMypage()
         }
         btn_rev.setOnClickListener {
             val category = "MUSIC"
@@ -151,7 +151,7 @@ class ReviewFragment : Fragment() {
         }
         btn_del.setOnClickListener {
             db.REVIEW_Delete(alias)
-            (activity as MainActivity).reviewToMypage()
+            (activity as MainActivity2).reviewToMypage()
         }
     }
 }

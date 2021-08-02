@@ -1,7 +1,11 @@
 package com.anroid.bottommenu
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
+import android.widget.EditText
 import android.widget.FrameLayout
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -9,67 +13,35 @@ import java.util.ArrayList
 
 class MainActivity : AppCompatActivity() {
 
-    init{
-        instance = this
-    }
-
-    companion object{
-        private var instance:MainActivity? = null
-        fun getInstance(): MainActivity? {
-            return instance
-        }
-    }
-
-    private val fl: FrameLayout by lazy {
-        findViewById(R.id.fl_)
-    }
-
-    private val bn: BottomNavigationView by lazy {
-        findViewById(R.id.bn_)
-    }
+    lateinit var btn_login: Button
+    lateinit var btn_register: Button
+    lateinit var et_email: EditText
+    lateinit var et_pass: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        supportFragmentManager.beginTransaction().add(fl.id, HomeFragment()).commit()
+        var dbHelper: DBHelper = DBHelper(applicationContext, "MEMBER.db", null, 1)
 
-        bn.setOnNavigationItemSelectedListener {
-            replaceFragment(
-                when (it.itemId) {
-                    R.id.menu_home -> HomeFragment()
-                    R.id.menu_review -> ReviewFragment()
-                    R.id.menu_mypage -> MypageFragment()
-                    R.id.menu_setting -> SettingFragment()
-                    else -> LogoutFragment()
-                }
-            )
-            true
+        btn_login=findViewById(R.id.btn_login)
+        btn_register=findViewById(R.id.btn_register)
+        et_email=findViewById(R.id.et_email)
+        et_pass=findViewById(R.id.et_pass)
+
+        btn_login.setOnClickListener {
+            if(dbHelper.getResult1(et_email.getText().toString(), et_pass.getText().toString()) == true){
+                val intent= Intent(this, MainActivity2::class.java)
+                startActivity(intent)
+            }else{
+                var login_t= Toast.makeText(this, "로그인 실패", Toast.LENGTH_SHORT)
+                login_t.show()
+            }
+        }
+
+        btn_register.setOnClickListener {
+            val intent= Intent(this, RegisterActivity::class.java)
+            startActivity(intent)
         }
     }
-
-    fun replaceFragment(fragment: Fragment) {
-        supportFragmentManager.beginTransaction().replace(fl.id, fragment).commit()
-    }
-
-    fun reviewToMypage() {
-        replaceFragment(MypageFragment())
-        bn.menu.getItem(2).isChecked = true
-    }
-
-    fun mypageToReview(fragment: Fragment, reviewList: Review) {
-        val bundle = Bundle()
-        bundle.putInt("alias", reviewList.alias)
-        bundle.putString("title", reviewList.title)
-        //bundle.putByteArray("image", reviewList.image)
-        bundle.putString("reviewContent", reviewList.review)
-        bundle.putString("description", reviewList.description)
-        bundle.putFloat("rating", reviewList.rating)
-        bundle.putString("emotion", reviewList.emotion)
-        bundle.putString("recommend", reviewList.recommend)
-        fragment.arguments = bundle
-        supportFragmentManager.beginTransaction().replace(R.id.fl_, fragment).commit()
-        bn.menu.getItem(1).isChecked = true
-    }
-
 }
