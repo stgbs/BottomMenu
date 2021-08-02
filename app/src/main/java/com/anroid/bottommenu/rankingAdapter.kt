@@ -1,6 +1,7 @@
 package com.anroid.bottommenu
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.BitmapFactory
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import kotlin.collections.ArrayList
 
 class rankingAdapter(val context: Context, val contentList: ArrayList<rankContent>) : BaseAdapter(){
@@ -26,6 +28,12 @@ class rankingAdapter(val context: Context, val contentList: ArrayList<rankConten
         Image.setImageBitmap(bitmap)
         Title.text = content.Title
         Descripton.text = content.description
+
+        view.setOnClickListener{
+            val intent = Intent(view?.context, ForumActivity::class.java)
+            intent.putExtra("title", Title.text)
+            ContextCompat.startActivity(view.context, intent, null)
+        }
 
         return view
     }

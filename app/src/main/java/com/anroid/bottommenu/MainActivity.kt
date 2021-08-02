@@ -1,15 +1,24 @@
 package com.anroid.bottommenu
 
-import android.content.DialogInterface
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.FrameLayout
-import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import java.util.ArrayList
 
 class MainActivity : AppCompatActivity() {
+
+    init{
+        instance = this
+    }
+
+    companion object{
+        private var instance:MainActivity? = null
+        fun getInstance(): MainActivity? {
+            return instance
+        }
+    }
 
     private val fl: FrameLayout by lazy {
         findViewById(R.id.fl_)
@@ -27,7 +36,7 @@ class MainActivity : AppCompatActivity() {
 
         bn.setOnNavigationItemSelectedListener {
             replaceFragment(
-                when(it.itemId) {
+                when (it.itemId) {
                     R.id.menu_home -> HomeFragment()
                     R.id.menu_review -> ReviewFragment()
                     R.id.menu_mypage -> MypageFragment()
@@ -39,8 +48,28 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun replaceFragment(fragment: Fragment) {
+    fun replaceFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction().replace(fl.id, fragment).commit()
+    }
+
+    fun reviewToMypage() {
+        replaceFragment(MypageFragment())
+        bn.menu.getItem(2).isChecked = true
+    }
+
+    fun mypageToReview(fragment: Fragment, reviewList: Review) {
+        val bundle = Bundle()
+        bundle.putInt("alias", reviewList.alias)
+        bundle.putString("title", reviewList.title)
+        //bundle.putByteArray("image", reviewList.image)
+        bundle.putString("reviewContent", reviewList.review)
+        bundle.putString("description", reviewList.description)
+        bundle.putFloat("rating", reviewList.rating)
+        bundle.putString("emotion", reviewList.emotion)
+        bundle.putString("recommend", reviewList.recommend)
+        fragment.arguments = bundle
+        supportFragmentManager.beginTransaction().replace(R.id.fl_, fragment).commit()
+        bn.menu.getItem(1).isChecked = true
     }
 
 }

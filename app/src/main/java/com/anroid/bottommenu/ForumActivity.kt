@@ -2,17 +2,14 @@ package com.anroid.bottommenu
 
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
-import android.database.sqlite.SQLiteOpenHelper
-import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
-import android.os.Parcelable
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import org.w3c.dom.Text
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 
 class ForumActivity : AppCompatActivity() {
@@ -24,6 +21,7 @@ class ForumActivity : AppCompatActivity() {
     lateinit var imageView: ImageView
     lateinit var forumList: List<Forum>
     lateinit var adapter: ForumExpandableAdapter
+    lateinit var btn_back: FloatingActionButton
 
     lateinit var myHelper: DBHelper
     lateinit var sqlDB: SQLiteDatabase
@@ -36,8 +34,13 @@ class ForumActivity : AppCompatActivity() {
         Genre_View = findViewById<TextView>(R.id.Genre_View)
         Description_TextView = findViewById<TextView>(R.id.Description_TextView)
         imageView = findViewById<ImageView>(R.id.image)
+        btn_back = findViewById<FloatingActionButton>(R.id.btn_back)
 
-        myHelper = DBHelper(this, "CONTENT", null, 1)
+        btn_back.setOnClickListener {
+            onBackPressed()
+        }
+
+        myHelper = DBHelper(this, "GURU", null, 1)
         if(intent.hasExtra("title")) {
             title = intent.getStringExtra("title").toString()
         }
@@ -45,19 +48,15 @@ class ForumActivity : AppCompatActivity() {
         Title_TextView.setText(title)
 
         sqlDB = myHelper.readableDatabase
-        var cursor: Cursor = sqlDB.rawQuery("SELECT image, genre, description FROM CONTENT WHERE title = '$title';", null)
+        var cursor: Cursor = sqlDB.rawQuery("SELECT image, description FROM CONTENT WHERE title = '$title';", null)
 
         while (cursor.moveToNext()){
-            var image = cursor.getBlob(0) // image
-            var genre = cursor.getString(1) // genre
-            var Description = cursor.getString(2) // description
+            var image = cursor.getBlob(cursor.getColumnIndex("image")) // image
+            var Description = cursor.getString(cursor.getColumnIndex("description")) // description
 
             imageView.setImageBitmap(BitmapFactory.decodeByteArray(image, 0, image.size))
-            Genre_View.setText(genre)
             Description_TextView.setText(Description)
         }
-
-        myHelper = DBHelper(this, "WIKI", null, 1)
 
         val recyclerView = findViewById<RecyclerView>(R.id.forum_recyclerView)
         val contentArr = myHelper.WIKI_Select(title)

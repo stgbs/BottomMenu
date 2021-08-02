@@ -1,6 +1,5 @@
 package com.anroid.bottommenu
 
-import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -24,7 +23,7 @@ class RankActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_rank)
 
-        myHelper = DBHelper(this, "CONTENT", null, 1)
+        myHelper = DBHelper(this, "GURU", null, 1)
 
         textView_Rank = findViewById<TextView>(R.id.textView_Rank)
         btn_Back = findViewById<FloatingActionButton>(R.id.btn_back)
@@ -39,21 +38,21 @@ class RankActivity : AppCompatActivity() {
 
             when(category){
                 "MOVIE" -> {
-                    var movieList = myHelper.ContentRank(Flag, category)
+                    var movieList = myHelper.RANK_Select(Flag, category)
                     val Adapter = rankingAdapter(this, movieList)
                     listView.adapter = Adapter
 
                     RankbtnPress(movieList, category)
                 }
                 "BOOK" -> {
-                    var bookList = myHelper.ContentRank(Flag, category)
+                    var bookList = myHelper.RANK_Select(Flag, category)
                     val Adapter = rankingAdapter(this, bookList)
                     listView.adapter = Adapter
 
                     RankbtnPress(bookList, category)
                 }
                 "MUSIC" -> {
-                    var musicList = myHelper.ContentRank(Flag, category)
+                    var musicList = myHelper.RANK_Select(Flag, category)
                     val Adapter = rankingAdapter(this, musicList)
                     listView.adapter = Adapter
 
@@ -76,7 +75,7 @@ class RankActivity : AppCompatActivity() {
             btn_rating.setBackgroundColor(this.getResources().getColor(R.color.teal_200))
             btn_random.setBackgroundColor(this.getResources().getColor(R.color.teal_200))
 
-            var contentList = myHelper.ContentRank(Flag, category)
+            var contentList = myHelper.RANK_Select(Flag, category)
             val Adapter = rankingAdapter(this, contentList)
             listView.adapter = Adapter
         }
@@ -86,7 +85,7 @@ class RankActivity : AppCompatActivity() {
             btn_rating.setBackgroundColor(this.getResources().getColor(R.color.teal_700))
             btn_random.setBackgroundColor(this.getResources().getColor(R.color.teal_200))
 
-            var contentList = myHelper.ContentRank(Flag, category)
+            var contentList = myHelper.RANK_Select(Flag, category)
             val Adapter = rankingAdapter(this, contentList)
             listView.adapter = Adapter
         }
@@ -96,7 +95,7 @@ class RankActivity : AppCompatActivity() {
             btn_rating.setBackgroundColor(this.getResources().getColor(R.color.teal_200))
             btn_random.setBackgroundColor(this.getResources().getColor(R.color.teal_700))
 
-            var contentList = myHelper.ContentRank(Flag, category)
+            var contentList = myHelper.RANK_Select(Flag, category)
             val Adapter = rankingAdapter(this, contentList)
             listView.adapter = Adapter
         }

@@ -38,7 +38,7 @@ class ForumExpandableAdapter(private val forumList: List<Forum>, private val tit
             val edit_content = itemView.findViewById<EditText>(R.id.edit_content_forum)
             val btn_save = itemView.findViewById<Button>(R.id.btn_save)
 
-            myHelper = DBHelper(itemView.getContext(), "WIKI", null, 1)
+            myHelper = DBHelper(itemView.getContext(), "GURU", null, 1)
 
             category.text = forum.category
             text_content.text = forum.content
@@ -66,7 +66,7 @@ class ForumExpandableAdapter(private val forumList: List<Forum>, private val tit
 
                 var update_text = edit_content.getText().toString();
                 val itemPosition = getAdapterPosition()
-                myHelper.updateWIKI(update_text, title, itemPosition)
+                myHelper.WIKI_Update(update_text, title, itemPosition)
                 Toast.makeText(itemView.getContext(), "저장되었습니다", Toast.LENGTH_SHORT).show()
 
                 text_content.text = edit_content.text
