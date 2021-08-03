@@ -46,25 +46,26 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
-                    <ImageView
-                        android:id="@+id/me"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginEnd="16dp"
-                        android:background="#FFEB3B"
-                        app:layout_constraintEnd_toStartOf="@+id/db_alias"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/text_mypage"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:srcCompat="@drawable/ic_baseline_mood_24" />
-
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
                         android:orientation="vertical">
+
+
+                        <EditText
+                            android:id="@+id/edt_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginEnd="16dp"
+                            android:ems="10"
+                            android:hint="제목"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/me" />
+
 
                         <TextView
                             android:id="@+id/edt_alias"
@@ -72,69 +73,121 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="16dp"
                             android:layout_marginTop="16dp"
-                            android:hint="닉네임"
+                            android:hint="Q 이 컨텐츠는 당신에게 어떤 장르인가요?"
+                            android:textSize="18dp"
                             app:layout_constraintStart_toEndOf="@+id/me"
                             app:layout_constraintTop_toBottomOf="@+id/text_mypage" />
 
                         <EditText
-                            android:id="@+id/summary"
-                            android:layout_width="match_parent"
+                            android:id="@+id/edt_genre"
+                            android:layout_width="363dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="16dp"
-                            android:layout_marginTop="8dp"
-                            android:layout_marginEnd="16dp"
-                            android:hint="한 줄 설명"
-                            android:maxLines="2"
+                            android:layout_marginTop="16dp"
+                            android:hint="A. #사이다, #추억,#스릴러"
+                            android:maxLength="18"
                             app:layout_constraintStart_toEndOf="@+id/me"
-                            app:layout_constraintTop_toBottomOf="@+id/db_alias" />
+                            app:layout_constraintTop_toBottomOf="@+id/text_mypage" />
+
+                        <LinearLayout
+                            android:layout_width="226dp"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <CheckBox
+                                android:id="@+id/btn_music"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="16dp"
+                                android:text="음악"
+                                android:textSize="12sp" />
+
+                            <CheckBox
+                                android:id="@+id/btn_movie"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="16dp"
+                                android:text="영화"
+                                android:textSize="12sp" />
+
+                            <CheckBox
+                                android:id="@+id/btn_book"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="16dp"
+                                android:text="도서"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="78dp">
+
+                            <TextView
+                                android:layout_width="134dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="16dp"
+                                android:layout_marginTop="16dp"
+                                android:layout_marginEnd="16dp"
+                                android:text="어떤 기분일 때 보기를 추천하나요?"
+                                android:textSize="14sp"
+                                android:textStyle="bold"
+                                app:layout_constraintStart_toStartOf="parent" />
+
+                            <CheckBox
+                                android:id="@+id/btn_happy"
+                                android:layout_width="wrap_content"
+                                android:layout_height="30dp"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="16dp"
+                                android:layout_marginEnd="16dp"
+                                android:button="@drawable/ic_baseline_happy"
+                                android:text="기뻐요"
+                                tools:textSize="12sp" />
+
+                            <CheckBox
+                                android:id="@+id/btn_sad"
+                                android:layout_width="wrap_content"
+                                android:layout_height="30dp"
+                                android:layout_marginTop="16dp"
+                                android:layout_marginEnd="16dp"
+                                android:button="@drawable/ic_baseline_sad"
+                                android:text="슬퍼요"
+                                tools:textSize="12sp" />
+
+                            <CheckBox
+                                android:id="@+id/btn_bored"
+                                android:layout_width="wrap_content"
+                                android:layout_height="30dp"
+                                android:layout_marginTop="16dp"
+                                android:layout_marginEnd="16dp"
+                                android:button="@drawable/ic_baseline_bored"
+                                android:text="심심해"
+                                android:textSize="12sp" />
+
+
+                        </LinearLayout>
 
 
                     </LinearLayout>
 
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="24dp"
-                        android:text="별점"
-                        android:textSize="24sp"
-                        android:textStyle="bold"
-                        app:layout_constraintTop_toBottomOf="@+id/db_alias" />
 
 
-                    <RatingBar
-                        android:id="@+id/ratingBar"
-                        style="@style/Widget.AppCompat.RatingBar.Indicator"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="24dp"
-                        android:isIndicator="false"
-                        android:max="5"
-                        android:numStars="5"
-                        android:rating="0.0"
-                        android:stepSize="0.5" />
-
-                </LinearLayout>
 
                 <EditText
-                    android:id="@+id/edt_title"
+                    android:id="@+id/summary"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="8dp"
                     android:layout_marginEnd="16dp"
-                    android:ems="10"
-                    android:hint="제목"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/me" />
+                    android:hint="한 줄 소개"
+                    android:maxLines="2"
+                    app:layout_constraintStart_toEndOf="@+id/me"
+                    app:layout_constraintTop_toBottomOf="@+id/db_alias" />
 
 
                 <EditText
@@ -154,56 +207,37 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="match_parent">
 
                     <TextView
-                        android:layout_width="120dp"
-                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_marginStart="16dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginEnd="16dp"
-                        android:text="어떤 기분이 드나요?"
-                        android:textSize="14sp"
+                        android:layout_marginTop="24dp"
+                        android:text="별점"
+                        android:textSize="18dp"
                         android:textStyle="bold"
-                        app:layout_constraintStart_toStartOf="parent" />
+                        app:layout_constraintTop_toBottomOf="@+id/db_alias" />
 
-                    <CheckBox
-                        android:id="@+id/btn_happy"
+
+                    <RatingBar
+                        android:id="@+id/ratingBar"
+                        style="@style/Widget.AppCompat.RatingBar.Indicator"
                         android:layout_width="wrap_content"
-                        android:layout_height="30dp"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginEnd="16dp"
-                        android:button="@drawable/ic_baseline_happy"
-                        android:text="기뻐요"
-                        tools:textSize="12sp" />
-
-                    <CheckBox
-                        android:id="@+id/btn_sad"
-                        android:layout_width="wrap_content"
-                        android:layout_height="30dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginEnd="16dp"
-                        android:button="@drawable/ic_baseline_sad"
-                        android:text="슬퍼요"
-                        tools:textSize="12sp" />
-
-                    <CheckBox
-                        android:id="@+id/btn_bored"
-                        android:layout_width="wrap_content"
-                        android:layout_height="30dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginEnd="16dp"
-                        android:button="@drawable/ic_baseline_bored"
-                        android:text="지루해"
-                        android:textSize="12sp" />
-
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="18dp"
+                        android:isIndicator="false"
+                        android:max="5"
+                        android:numStars="5"
+                        android:rating="0.0"
+                        android:stepSize="0.5" />
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="wrap_content">
 
                     <TextView
                         android:id="@+id/db_choose"
@@ -212,6 +246,7 @@
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="16dp"
                         android:layout_marginEnd="16dp"
+                        android:layout_marginBottom="16dp"
                         android:text="추천 선택"
                         android:textAlignment="center"
                         android:textAllCaps="false"
@@ -228,6 +263,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="16dp"
+                        android:layout_marginBottom="16dp"
                         android:background="#00BCD4"
                         android:backgroundTint="#673AB7"
                         android:buttonTint="#FFEB3B"
@@ -242,6 +278,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="16dp"
+                        android:layout_marginBottom="16dp"
                         android:background="#FFEB3B"
                         android:backgroundTint="#673AB7"
                         android:buttonTint="#FFEB3B"
@@ -277,13 +314,7 @@
                         android:layout_marginStart="16dp"
                         android:text="삭제" />
 
-                    <Button
-                        android:id="@+id/btn_rev"
-                        android:layout_width="70dp"
-                        android:layout_height="40dp"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="16dp"
-                        android:text="수정" />
+
                 </LinearLayout>
             </LinearLayout>
         </ScrollView>

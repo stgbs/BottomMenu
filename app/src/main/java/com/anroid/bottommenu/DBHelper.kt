@@ -85,7 +85,7 @@ class DBHelper(
         var db: SQLiteDatabase = readableDatabase
         var result: String = ""
 
-        var cursor: Cursor = db.rawQuery("SELECT ID, PASSWORD FROM MEMBER", null)
+        var cursor: Cursor = db.rawQuery("SELECT EMAIL, PASSWORD FROM MEMBER", null)
         while (cursor.moveToNext()) {
             result = (cursor.getString(0))
             if (result.equals(ID)) {
@@ -144,7 +144,7 @@ class DBHelper(
 
         db!!.execSQL("UPDATE REVIEW SET title = '$title' WHERE alias = '$alias';")
         db!!.execSQL("UPDATE REVIEW SET review = '$review' WHERE alias = '$alias';")
-        db!!.execSQL("UPDATE REVIEW SET category = '$description' WHERE alias = '$alias';")
+        db!!.execSQL("UPDATE REVIEW SET category = '$category' WHERE alias = '$alias';")
         db!!.execSQL("UPDATE REVIEW SET genre = '$genre' WHERE alias = '$alias';")
         db!!.execSQL("UPDATE REVIEW SET description = '$description' WHERE alias = '$alias';")
         db!!.execSQL("UPDATE REVIEW SET rating = '$rating' WHERE alias = '$alias';")
@@ -350,12 +350,10 @@ class DBHelper(
 
         db!!.execSQL("UPDATE CONTENT SET HAPPY = '$happyScore' WHERE title = '$title' AND category = '$category';")
         db!!.execSQL("UPDATE CONTENT SET SAD = '$sadScore' WHERE title = '$title' AND category = '$category';")
-        db!!.execSQL("UPDATE CONTENT SET BORING = '$boredScore' WHERE title = '$title' AND category = '$category';")
+        db!!.execSQL("UPDATE CONTENT SET BORED = '$boredScore' WHERE title = '$title' AND category = '$category';")
         db!!.execSQL("UPDATE CONTENT SET recommend = '$recommendScore' WHERE title = '$title' AND category = '$category';")
         db!!.execSQL("UPDATE CONTENT SET rating = '$ratingScore' WHERE title = '$title' AND category = '$category';")
         db!!.execSQL("UPDATE CONTENT SET reviewNum = '$reviewNum' WHERE title = '$title' AND category = '$category';")
-
-        db.close()
     }
 
     /* WIKI */

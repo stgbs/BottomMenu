@@ -32,12 +32,10 @@ class ReviewAdapter(val context: Context, val reviewList: List<Review>): BaseAda
         val rowView: View = LayoutInflater.from(context).inflate(R.layout.review_contents, null)
 
         val textId = rowView.findViewById<TextView>(R.id.textId)
-        val imageView = rowView.findViewById<ImageView>(R.id.imageView)
         val textContent = rowView.findViewById<TextView>(R.id.textContent)
         val textDescription = rowView.findViewById<TextView>(R.id.textDescription)
 
         textId.text = reviewList[position].alias.toString()
-        imageView.setImageResource(R.drawable.image)
         textContent.text = reviewList[position].title
         textDescription.text = reviewList[position].description
 

@@ -22,6 +22,7 @@ class ReviewFragment : Fragment() {
 
     lateinit var edt_alias: TextView
     lateinit var ratingBar: RatingBar
+    lateinit var edt_genre: EditText
     lateinit var summary: EditText
     lateinit var edt_title: EditText
     lateinit var review: EditText
@@ -33,8 +34,11 @@ class ReviewFragment : Fragment() {
     lateinit var btn_sad: CheckBox
     lateinit var btn_bored: CheckBox
 
+    lateinit var btn_music: CheckBox
+    lateinit var btn_movie: CheckBox
+    lateinit var btn_book: CheckBox
+
     lateinit var btn_add: Button
-    lateinit var btn_rev: Button
     lateinit var btn_del: Button
 
     override fun onCreateView(
@@ -47,6 +51,7 @@ class ReviewFragment : Fragment() {
 
         edt_alias = view.findViewById<TextView>(R.id.edt_alias)
         summary = view.findViewById<EditText>(R.id.summary)
+        edt_genre = view.findViewById<EditText>(R.id.edt_genre)
         edt_title = view.findViewById<EditText>(R.id.edt_title)
         review = view.findViewById<EditText>(R.id.review)
 
@@ -57,7 +62,11 @@ class ReviewFragment : Fragment() {
 
         btn_add = view.findViewById<Button>(R.id.btn_add)
         btn_del = view.findViewById<Button>(R.id.btn_del)
-        btn_rev = view.findViewById<Button>(R.id.btn_rev)
+
+        btn_music = view.findViewById<CheckBox>(R.id.btn_music)
+        btn_book = view.findViewById<CheckBox>(R.id.btn_book)
+        btn_movie = view.findViewById<CheckBox>(R.id.btn_movie)
+
 
         btn_happy = view.findViewById<CheckBox>(R.id.btn_happy)
         btn_sad = view.findViewById<CheckBox>(R.id.btn_sad)
@@ -66,8 +75,9 @@ class ReviewFragment : Fragment() {
         arguments?.let {
             alias = it.getInt("alias")
             title = it.getString("title").toString()
-            reviewContent = it.getString("reviewContent").toString()
             genre = it.getString("genre").toString()
+            category = it.getString("category").toString()
+            reviewContent = it.getString("reviewContent").toString()
             description = it.getString("description").toString()
             ratingScore = it.getFloat("rating")
             emotion = it.getString("emotion").toString()
@@ -75,6 +85,7 @@ class ReviewFragment : Fragment() {
         }
 
         edt_title.setText(title)
+        edt_genre.setText(genre)
         summary.setText(description)
         review.setText(reviewContent)
         ratingBar.rating = ratingScore
@@ -92,6 +103,13 @@ class ReviewFragment : Fragment() {
             else -> false
         }
 
+        when(category){
+            "MUSIC" -> btn_music.isChecked = true
+            "MOVIE" -> btn_movie.isChecked = true
+            "BOOK" -> btn_book.isChecked = true
+            else -> false
+        }
+
         //Event
         ratingBar.setOnRatingBarChangeListener { ratingBar, rating, fromUser ->
             ratingScore = rating
@@ -99,6 +117,7 @@ class ReviewFragment : Fragment() {
 
         emotion_btnEvent()
         recommend_btnEvent()
+        category_btnEvent()
         btnEvent()
 
         db.close()
@@ -134,9 +153,30 @@ class ReviewFragment : Fragment() {
         }
     }
 
+    private fun category_btnEvent(){
+        btn_music.setOnClickListener{
+            btn_book.isChecked = false
+            btn_movie.isChecked = false
+            category = "MUSIC"
+        }
+
+        btn_movie.setOnClickListener{
+            btn_music.isChecked = false
+            btn_book.isChecked = false
+            category = "MOVIE"
+        }
+
+        btn_book.setOnClickListener{
+            btn_music.isChecked = false
+            btn_movie.isChecked = false
+            category = "BOOK"
+        }
+    }
+
     private fun btnEvent(){
         btn_add.setOnClickListener {
             title = edt_title.text.toString()
+            genre = edt_genre.text.toString()
             reviewContent = review.text.toString()
             description = summary.text.toString()
 
