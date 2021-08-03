@@ -15,14 +15,4 @@
         android:enabled="true"
         android:id="@+id/menu_mypage"
         android:icon="@drawable/ic_baseline_account_box_24" />
-    <item
-        android:title="Setting"
-        android:enabled="true"
-        android:id="@+id/menu_setting"
-        android:icon="@drawable/ic_baseline_settings_24" />
-    <item
-        android:title="Logout"
-        android:enabled="true"
-        android:id="@+id/menu_logout"
-        android:icon="@drawable/ic_baseline_power_settings_new_24" />
 </menu>

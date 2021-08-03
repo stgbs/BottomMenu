@@ -1,8 +1,13 @@
 package com.anroid.bottommenu
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.FrameLayout
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
@@ -38,9 +43,7 @@ class MainActivity2 : AppCompatActivity() {
                 when (it.itemId) {
                     R.id.menu_home -> HomeFragment()
                     R.id.menu_review -> ReviewFragment()
-                    R.id.menu_mypage -> MypageFragment()
-                    R.id.menu_setting -> SettingFragment()
-                    else -> LogoutFragment()
+                    else -> MypageFragment()
                 }
             )
             true
@@ -72,5 +75,39 @@ class MainActivity2 : AppCompatActivity() {
         bn.menu.getItem(1).isChecked = true
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.option_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item?.itemId) {
+            R.id.report -> {
+                val email = Intent(Intent.ACTION_SEND)
+                email.type = "plain/text"
+                val address = arrayOf("yilllios.03@gmail.com")
+                email.putExtra(Intent.EXTRA_EMAIL, address)
+                email.putExtra(Intent.EXTRA_SUBJECT, "문의합니다.")
+                email.putExtra(Intent.EXTRA_TEXT, "문의할 내용을 입력해 주세요")
+                startActivity(email)
+                return true
+            }
+            R.id.logout -> {
+                val dlg = AlertDialog.Builder(this)
+                dlg.setMessage("로그아웃 하시겠습니까?")
+                dlg.setPositiveButton("확인") { dialog, which ->
+                    val intent= Intent(this, MainActivity::class.java)
+                    startActivity(intent)
+                    Toast.makeText(this, "로그아웃됨", Toast.LENGTH_SHORT).show()
+                }
+                dlg.setNegativeButton("취소") {dialog, which ->
+                    Toast.makeText(this, "취소됨", Toast.LENGTH_SHORT).show()
+                }
+                dlg.show()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
 
 }
