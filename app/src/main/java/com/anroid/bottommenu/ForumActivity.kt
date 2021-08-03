@@ -16,7 +16,6 @@ class ForumActivity : AppCompatActivity() {
     private lateinit var title: String
 
     lateinit var Title_TextView: TextView
-    lateinit var Genre_View: TextView
     lateinit var Description_TextView: TextView
     lateinit var imageView: ImageView
     lateinit var forumList: List<Forum>
@@ -31,7 +30,6 @@ class ForumActivity : AppCompatActivity() {
         setContentView(R.layout.activity_forum)
 
         Title_TextView = findViewById<TextView>(R.id.Title_TextView)
-        Genre_View = findViewById<TextView>(R.id.Genre_View)
         Description_TextView = findViewById<TextView>(R.id.Description_TextView)
         imageView = findViewById<ImageView>(R.id.image)
         btn_back = findViewById<FloatingActionButton>(R.id.btn_back)

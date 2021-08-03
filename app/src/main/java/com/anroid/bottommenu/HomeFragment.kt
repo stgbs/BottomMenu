@@ -18,6 +18,7 @@ class HomeFragment : Fragment() {
 
     lateinit var rv_content_happy : RecyclerView
     lateinit var rv_content_sad : RecyclerView
+    lateinit var rv_content_boring : RecyclerView
     lateinit var rv_content_newMovie : RecyclerView
     lateinit var rv_content_newBook : RecyclerView
     lateinit var rv_content_newMusic : RecyclerView
@@ -35,7 +36,7 @@ class HomeFragment : Fragment() {
         myHelper = DBHelper(getActivity(), "GURU", null, 1)
 
         // # 기쁠 때
-        val contentList_happy = myHelper.CONTENT_Select()
+        val contentList_happy = myHelper.CONTENT_Select_EMOTION("HAPPY")
         rv_content_happy = view.findViewById(R.id.rv_content_happy)
         rv_content_happy.layoutManager = LinearLayoutManager(
             requireContext(),
@@ -46,7 +47,7 @@ class HomeFragment : Fragment() {
         rv_content_happy.adapter = ContentAdapter(contentList_happy)
 
         // # 슬플 때
-        val contentList_sad = myHelper.CONTENT_Select()
+        val contentList_sad = myHelper.CONTENT_Select_EMOTION("SAD")
         rv_content_sad = view.findViewById(R.id.rv_content_Sad)
         rv_content_sad.layoutManager = LinearLayoutManager(
             requireContext(),
@@ -55,6 +56,17 @@ class HomeFragment : Fragment() {
         )
         rv_content_sad.setHasFixedSize(true)
         rv_content_sad.adapter = ContentAdapter(contentList_sad)
+
+        // # 지루할 때
+        val contentList_boring = myHelper.CONTENT_Select_EMOTION("BORED")
+        rv_content_boring = view.findViewById(R.id.rv_content_Boring)
+        rv_content_boring.layoutManager = LinearLayoutManager(
+            requireContext(),
+            LinearLayoutManager.HORIZONTAL,
+            false
+        )
+        rv_content_boring.setHasFixedSize(true)
+        rv_content_boring.adapter = ContentAdapter(contentList_boring)
 
         // # 최신 영화
         val contentList_newMovie = myHelper.CONTENT_Select_NEW("MOVIE")

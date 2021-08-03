@@ -11,6 +11,8 @@ class ReviewFragment : Fragment() {
     private var alias: Int = 0
     private var title: String = ""
     private var reviewContent: String = ""
+    private var category: String = ""
+    private var genre: String = ""
     private var description: String = ""
     private var ratingScore: Float = 0.0f
     private var emotion: String = ""
@@ -64,8 +66,8 @@ class ReviewFragment : Fragment() {
         arguments?.let {
             alias = it.getInt("alias")
             title = it.getString("title").toString()
-            //image = it.getByteArray("image")
             reviewContent = it.getString("reviewContent").toString()
+            genre = it.getString("genre").toString()
             description = it.getString("description").toString()
             ratingScore = it.getFloat("rating")
             emotion = it.getString("emotion").toString()
@@ -116,7 +118,7 @@ class ReviewFragment : Fragment() {
         }
         btn_bored.setOnClickListener {
             btn_sad.isChecked = false
-            btn_good.isChecked = false
+            btn_happy.isChecked = false
             emotion = "BORED"
         }
     }
@@ -139,16 +141,12 @@ class ReviewFragment : Fragment() {
             description = summary.text.toString()
 
             when(alias){
-                0 -> db.REVIEW_Insert(title, reviewContent, description, ratingScore, emotion, recommend)
-                else -> db.REVIEW_Update(alias, title, reviewContent, description, ratingScore, emotion, recommend)
+                0 -> db.REVIEW_Insert(title, reviewContent, genre, category, description, ratingScore, emotion, recommend)
+                else -> db.REVIEW_Update(alias, title, reviewContent, genre, category, description, ratingScore, emotion, recommend)
             }
             (activity as MainActivity2).reviewToMypage()
         }
-        btn_rev.setOnClickListener {
-            val category = "MUSIC"
-            //val image
-            //db.REVIEW_Insert(title, image, category, description, ratingScore)
-        }
+
         btn_del.setOnClickListener {
             db.REVIEW_Delete(alias)
             (activity as MainActivity2).reviewToMypage()

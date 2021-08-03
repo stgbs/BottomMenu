@@ -60,7 +60,7 @@ class MainActivity2 : AppCompatActivity() {
         val bundle = Bundle()
         bundle.putInt("alias", reviewList.alias)
         bundle.putString("title", reviewList.title)
-        //bundle.putByteArray("image", reviewList.image)
+        bundle.putString("genre", reviewList.genre)
         bundle.putString("reviewContent", reviewList.review)
         bundle.putString("description", reviewList.description)
         bundle.putFloat("rating", reviewList.rating)
@@ -70,5 +70,6 @@ class MainActivity2 : AppCompatActivity() {
         supportFragmentManager.beginTransaction().replace(R.id.fl_, fragment).commit()
         bn.menu.getItem(1).isChecked = true
     }
+
 
 }

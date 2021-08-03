@@ -17,7 +17,6 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-
             <TextView
                 android:id="@+id/textView_Happy"
                 android:layout_width="wrap_content"
@@ -41,7 +40,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView_Happy"
                 tools:layout_conversion_absoluteHeight="19dp"
                 tools:layout_conversion_absoluteWidth="411dp" />
-
 
             <TextView
                 android:id="@+id/textView_Sad"
@@ -67,6 +65,29 @@
                 tools:layout_conversion_absoluteHeight="19dp"
                 tools:layout_conversion_absoluteWidth="411dp" />
 
+            <TextView
+                android:id="@+id/textView_Boring"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="10dp"
+                android:text="# 지루할 때"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rv_content_Sad"
+                tools:layout_conversion_absoluteHeight="30dp"
+                tools:layout_conversion_absoluteWidth="85dp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_content_Boring"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView_Boring"
+                tools:layout_conversion_absoluteHeight="19dp"
+                tools:layout_conversion_absoluteWidth="411dp" />
 
             <Button
                 android:id="@+id/btn_movie"
@@ -91,7 +112,7 @@
                 app:layout_constraintEnd_toStartOf="@+id/btn_music"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/btn_movie"
-                app:layout_constraintTop_toBottomOf="@+id/rv_content_Sad"
+                app:layout_constraintTop_toBottomOf="@+id/rv_content_Boring"
                 tools:layout_conversion_absoluteHeight="48dp"
                 tools:layout_conversion_absoluteWidth="110dp"
                 tools:layout_weight="1" />
