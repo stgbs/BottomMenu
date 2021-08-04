@@ -10,4 +10,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="top">#8ec5fc</color>
     <color name="bottom">#8ec5fc</color>
+    <color name="top_clk">#FF68A7E6</color>
 </resources>

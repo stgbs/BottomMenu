@@ -71,9 +71,9 @@ class RankActivity : AppCompatActivity() {
     fun RankbtnPress(contentList: ArrayList<rankContent>, category: String) {
         btn_popularity.setOnClickListener {
             Flag = "popularity"
-            btn_popularity.setBackgroundColor(this.getResources().getColor(R.color.teal_700))
-            btn_rating.setBackgroundColor(this.getResources().getColor(R.color.teal_200))
-            btn_random.setBackgroundColor(this.getResources().getColor(R.color.teal_200))
+            btn_popularity.setBackgroundColor(this.getResources().getColor(R.color.top_clk))
+            btn_rating.setBackgroundColor(this.getResources().getColor(R.color.top))
+            btn_random.setBackgroundColor(this.getResources().getColor(R.color.top))
 
             var contentList = myHelper.RANK_Select(Flag, category)
             val Adapter = rankingAdapter(this, contentList)
@@ -81,9 +81,9 @@ class RankActivity : AppCompatActivity() {
         }
         btn_rating.setOnClickListener {
             Flag = "rating"
-            btn_popularity.setBackgroundColor(this.getResources().getColor(R.color.teal_200))
-            btn_rating.setBackgroundColor(this.getResources().getColor(R.color.teal_700))
-            btn_random.setBackgroundColor(this.getResources().getColor(R.color.teal_200))
+            btn_popularity.setBackgroundColor(this.getResources().getColor(R.color.top))
+            btn_rating.setBackgroundColor(this.getResources().getColor(R.color.top_clk))
+            btn_random.setBackgroundColor(this.getResources().getColor(R.color.top))
 
             var contentList = myHelper.RANK_Select(Flag, category)
             val Adapter = rankingAdapter(this, contentList)
@@ -91,9 +91,9 @@ class RankActivity : AppCompatActivity() {
         }
         btn_random.setOnClickListener {
             Flag = "random"
-            btn_popularity.setBackgroundColor(this.getResources().getColor(R.color.teal_200))
-            btn_rating.setBackgroundColor(this.getResources().getColor(R.color.teal_200))
-            btn_random.setBackgroundColor(this.getResources().getColor(R.color.teal_700))
+            btn_popularity.setBackgroundColor(this.getResources().getColor(R.color.top))
+            btn_rating.setBackgroundColor(this.getResources().getColor(R.color.top))
+            btn_random.setBackgroundColor(this.getResources().getColor(R.color.top_clk))
 
             var contentList = myHelper.RANK_Select(Flag, category)
             val Adapter = rankingAdapter(this, contentList)
