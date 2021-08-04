@@ -9,7 +9,7 @@
     <EditText
         android:id="@+id/et_email"
         android:layout_width="300dp"
-        android:layout_height="45dp"
+        android:layout_height="50dp"
         android:layout_marginBottom="30dp"
         android:ems="10"
         android:hint="아이디:  Email"
@@ -21,7 +21,7 @@
     <EditText
         android:id="@+id/et_name"
         android:layout_width="300dp"
-        android:layout_height="45dp"
+        android:layout_height="50dp"
         android:layout_marginBottom="30dp"
         android:ems="10"
         android:hint="닉네임"
@@ -33,7 +33,7 @@
     <EditText
         android:id="@+id/et_pass"
         android:layout_width="300dp"
-        android:layout_height="45dp"
+        android:layout_height="50dp"
         android:layout_marginBottom="30dp"
         android:ems="10"
         android:hint="패스워드"
@@ -46,7 +46,7 @@
     <EditText
         android:id="@+id/et_passck"
         android:layout_width="300dp"
-        android:layout_height="45dp"
+        android:layout_height="50dp"
         android:layout_marginBottom="50dp"
         android:ems="10"
         android:hint="패스워드 확인"
