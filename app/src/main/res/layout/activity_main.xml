@@ -33,22 +33,28 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-    <Button
+
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_login"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:background="@drawable/r_button"
         android:text="로그인"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="@+id/et_pass"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/et_pass"
         app:layout_constraintTop_toBottomOf="@+id/et_pass" />
-    <Button
+
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_register"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:background="@drawable/r_button"
         android:text="회원가입"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="@+id/btn_login"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/btn_login"

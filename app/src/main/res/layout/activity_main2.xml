@@ -19,6 +19,8 @@
         android:id="@+id/bn_"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        app:itemIconTint="@color/bottom"
+        app:itemTextColor="@color/bottom"
         app:labelVisibilityMode="labeled"
         app:menu="@menu/bottom_menu"
         app:layout_constraintTop_toBottomOf="@+id/fl_"

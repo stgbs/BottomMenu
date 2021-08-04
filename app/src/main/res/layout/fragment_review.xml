@@ -15,16 +15,17 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <TextView
                 android:id="@+id/text_mypage"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#FFFFFF"
-                android:backgroundTint="#FFEB3B"
-                android:text="후기등록"
+                android:background="@drawable/r_background"
+                android:padding="5dp"
+                android:text="REVIEW"
                 android:textAlignment="center"
-                android:textColor="#673AB7"
-                android:textSize="24sp"
+                android:textColor="@color/white"
+                android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -264,11 +265,7 @@
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="16dp"
                         android:layout_marginBottom="16dp"
-                        android:background="#00BCD4"
-                        android:backgroundTint="#673AB7"
-                        android:buttonTint="#FFEB3B"
                         android:text="추천해요"
-                        android:textColor="#FFFFFF"
                         app:layout_constraintStart_toEndOf="@+id/db_choose"
                         app:layout_constraintTop_toBottomOf="@+id/content" />
 
@@ -279,39 +276,44 @@
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="16dp"
                         android:layout_marginBottom="16dp"
-                        android:background="#FFEB3B"
-                        android:backgroundTint="#673AB7"
-                        android:buttonTint="#FFEB3B"
                         android:text="비추천해요"
-                        android:textColor="#FFFEFE"
                         app:layout_constraintStart_toEndOf="@+id/btn_good"
                         app:layout_constraintTop_toBottomOf="@+id/content" />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="300dp"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
                     android:orientation="horizontal">
 
 
-                    <Button
+                    <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/btn_add"
                         android:layout_width="70dp"
                         android:layout_height="40dp"
                         android:layout_gravity="center"
                         android:layout_marginTop="16dp"
+                        android:layout_marginRight="15dp"
                         android:layout_marginBottom="16dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/r_button"
                         android:text="등록"
+                        android:textColor="@color/white"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/btn_good" />
 
-                    <Button
+                    <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/btn_del"
                         android:layout_width="70dp"
                         android:layout_height="40dp"
                         android:layout_gravity="center"
                         android:layout_marginStart="16dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/r_button"
+                        android:textColor="@color/white"
                         android:text="삭제" />
 
 

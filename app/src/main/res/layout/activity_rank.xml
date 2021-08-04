@@ -46,34 +46,40 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_popularity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:backgroundTint="@color/teal_200"
             android:layout_weight="1"
-            android:text="후기 많은 순" />
+            android:background="@drawable/r_button"
+            android:backgroundTint="#FF330867"
+            android:text="후기 많은 순"
+            android:textColor="@color/white" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_rating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:backgroundTint="@color/teal_200"
             android:layout_weight="1"
+            android:background="@drawable/r_button"
+            android:backgroundTint="#FF330867"
+            android:textColor="@color/white"
             android:text="별점 높은 순" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_random"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:backgroundTint="@color/teal_700"
             android:layout_weight="1"
+            android:background="@drawable/r_button"
+            android:backgroundTint="#FF330867"
+            android:textColor="@color/white"
             android:text="랜덤" />
     </LinearLayout>
 

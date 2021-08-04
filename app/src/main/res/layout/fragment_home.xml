@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/background"
     tools:context=".HomeFragment">
 
     <ScrollView
@@ -46,7 +47,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
                 android:text="# 슬플 때"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 app:layout_constraintStart_toStartOf="parent"
@@ -70,7 +71,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
                 android:text="# 지루할 때"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 app:layout_constraintStart_toStartOf="parent"
@@ -89,11 +90,13 @@
                 tools:layout_conversion_absoluteHeight="19dp"
                 tools:layout_conversion_absoluteWidth="411dp" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_movie"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/r_button"
                 android:text="영화/드라마"
+                android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="@+id/btn_book"
                 app:layout_constraintEnd_toStartOf="@+id/btn_book"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -103,12 +106,14 @@
                 tools:layout_conversion_absoluteWidth="131dp"
                 tools:layout_weight="1" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_book"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/r_button"
                 android:text="도서"
+                android:textColor="@color/white"
                 app:layout_constraintEnd_toStartOf="@+id/btn_music"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/btn_movie"
@@ -117,11 +122,13 @@
                 tools:layout_conversion_absoluteWidth="110dp"
                 tools:layout_weight="1" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_music"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/r_button"
                 android:text="음악"
+                android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="@+id/btn_book"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -137,7 +144,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="35dp"
                 android:text="# 최신 영화/드라마"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 app:layout_constraintStart_toStartOf="parent"
@@ -162,7 +169,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
                 android:text="# 최신 도서"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 app:layout_constraintStart_toStartOf="parent"
@@ -187,7 +194,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
                 android:text="# 최신 음악"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 app:layout_constraintStart_toStartOf="parent"
