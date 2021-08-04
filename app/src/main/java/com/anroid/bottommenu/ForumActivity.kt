@@ -14,6 +14,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class ForumActivity : AppCompatActivity() {
     private lateinit var title: String
+    private lateinit var category: String
 
     lateinit var Title_TextView: TextView
     lateinit var Description_TextView: TextView
@@ -46,11 +47,12 @@ class ForumActivity : AppCompatActivity() {
         Title_TextView.setText(title)
 
         sqlDB = myHelper.readableDatabase
-        var cursor: Cursor = sqlDB.rawQuery("SELECT image, description FROM CONTENT WHERE title = '$title';", null)
+        var cursor: Cursor = sqlDB.rawQuery("SELECT image, description, category FROM CONTENT WHERE title = '$title';", null)
 
         while (cursor.moveToNext()){
             var image = cursor.getBlob(cursor.getColumnIndex("image")) // image
             var Description = cursor.getString(cursor.getColumnIndex("description")) // description
+            category = cursor.getString(cursor.getColumnIndex("category"))
 
             imageView.setImageBitmap(BitmapFactory.decodeByteArray(image, 0, image.size))
             Description_TextView.setText(Description)
@@ -60,7 +62,7 @@ class ForumActivity : AppCompatActivity() {
         val contentArr = myHelper.WIKI_Select(title)
 
         forumList = ArrayList()
-        forumList = loadData(contentArr)
+        forumList = loadData(contentArr, category)
 
         recyclerView.setHasFixedSize(true)
         recyclerView.layoutManager = LinearLayoutManager(this)
@@ -72,16 +74,43 @@ class ForumActivity : AppCompatActivity() {
         cursor.close()
     }
 
-    private fun loadData(contentArray: ArrayList<String>): List<Forum> {
+    private fun loadData(contentArray: ArrayList<String>, flag: String): List<Forum> {
         val forumList = ArrayList<Forum>()
-        val categories = resources.getStringArray(R.array.category)
-        val contents = contentArray
-        for (i in categories.indices) {
-            val forum = Forum().apply {
-                category = categories[i]
-                content = contents[i]
+        var categories: Array<String>
+        when(flag){
+            "MOVIE" -> {
+                categories = resources.getStringArray(R.array.category_movie)
+                val contents = contentArray
+                for (i in categories.indices) {
+                    val forum = Forum().apply {
+                        category = categories[i]
+                        content = contents[i]
+                    }
+                    forumList.add(forum)
+                }
             }
-            forumList.add(forum)
+            "MUSIC" -> {
+                categories = resources.getStringArray(R.array.category_music)
+                val contents = contentArray
+                for (i in categories.indices) {
+                    val forum = Forum().apply {
+                        category = categories[i]
+                        content = contents[i]
+                    }
+                    forumList.add(forum)
+                }
+            }
+            "BOOK" -> {
+                categories = resources.getStringArray(R.array.category_book)
+                val contents = contentArray
+                for (i in categories.indices) {
+                    val forum = Forum().apply {
+                        category = categories[i]
+                        content = contents[i]
+                    }
+                    forumList.add(forum)
+                }
+            }
         }
         return forumList
     }

@@ -208,40 +208,14 @@ class DBHelper(
         var db: SQLiteDatabase = readableDatabase
         val contentList: ArrayList<Content> = ArrayList<Content>()
         try {
-            when(emotion){
-                "HAPPY" -> {
-                    val cursor: Cursor = db!!.rawQuery("SELECT * FROM CONTENT ORDER BY HAPPY DESC, recommend DESC",null)
-                    var count = 0
-                    while (cursor.moveToNext() && count <= 10) {
-                        count += 1
-                        val image = cursor.getBlob(1)
-                        val title = cursor.getString(0)
-                        val content = Content(image, title)
-                        contentList.add(content)
-                    }
-                }
-                "SAD" -> {
-                    val cursor: Cursor = db!!.rawQuery("SELECT * FROM CONTENT ORDER BY SAD DESC, recommend DESC",null)
-                    var count = 0
-                    while (cursor.moveToNext() && count <= 10) {
-                        count += 1
-                        val image = cursor.getBlob(1)
-                        val title = cursor.getString(0)
-                        val content = Content(image, title)
-                        contentList.add(content)
-                    }
-                }
-                "BORED" -> {
-                    val cursor: Cursor = db!!.rawQuery("SELECT * FROM CONTENT ORDER BY BORED DESC, recommend DESC",null)
-                    var count = 0
-                    while (cursor.moveToNext() && count <= 10) {
-                        count += 1
-                        val image = cursor.getBlob(1)
-                        val title = cursor.getString(0)
-                        val content = Content(image, title)
-                        contentList.add(content)
-                    }
-                }
+            val cursor: Cursor = db!!.rawQuery("SELECT * FROM CONTENT ORDER BY $emotion DESC, recommend DESC",null)
+            var count = 0
+            while (cursor.moveToNext() && count <= 10) {
+                count += 1
+                val image = cursor.getBlob(1)
+                val title = cursor.getString(0)
+                val content = Content(image, title)
+                contentList.add(content)
             }
         } catch (ex: Exception) {
             Log.e(ContentValues.TAG, "Exception in executing insert SQL.", ex)

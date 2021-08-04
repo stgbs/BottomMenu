@@ -73,10 +73,11 @@
             android:textSize="12sp"
             android:visibility="gone" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_save"
             android:text="저장"
             android:visibility="gone"
+            android:background="@drawable/r_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
     </LinearLayout>
