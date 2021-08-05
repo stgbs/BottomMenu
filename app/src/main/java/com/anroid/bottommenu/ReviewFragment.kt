@@ -90,6 +90,7 @@ class ReviewFragment : Fragment() {
         review.setText(reviewContent)
         ratingBar.rating = ratingScore
 
+        //체크 박스 선택
         when(emotion){
             "HAPPY" -> btn_happy.isChecked = true
             "SAD" -> btn_sad.isChecked = true
@@ -124,6 +125,8 @@ class ReviewFragment : Fragment() {
         return view
     }
 
+    //emotion 버튼이벤트
+
     private fun emotion_btnEvent(){
         btn_happy.setOnClickListener{
             btn_sad.isChecked = false
@@ -142,6 +145,7 @@ class ReviewFragment : Fragment() {
         }
     }
 
+    //recommend 버튼 이벤트
     private fun recommend_btnEvent(){
         btn_good.setOnClickListener{
             btn_hate.isChecked = false
@@ -152,6 +156,8 @@ class ReviewFragment : Fragment() {
             recommend = "NOPE"
         }
     }
+
+    //category 버튼 이벤트
 
     private fun category_btnEvent(){
         btn_music.setOnClickListener{
@@ -173,6 +179,7 @@ class ReviewFragment : Fragment() {
         }
     }
 
+    //text 버튼 이벤트
     private fun btnEvent(){
         btn_add.setOnClickListener {
             title = edt_title.text.toString()
@@ -186,7 +193,7 @@ class ReviewFragment : Fragment() {
             }
             (activity as MainActivity2).reviewToMypage()
         }
-
+//리뷰 삭제 버튼이벤트
         btn_del.setOnClickListener {
             db.REVIEW_Delete(alias)
             (activity as MainActivity2).reviewToMypage()
