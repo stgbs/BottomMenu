@@ -32,7 +32,7 @@ class DBHelper(
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
 
     }
-
+    // 회원가입
     fun insert(
         email: String, name: String, password: String, password_ck: String
     ) {
@@ -44,43 +44,7 @@ class DBHelper(
         )
         db.close()
     }
-
-    fun update(
-        name: String, password: String, password_ck: String, email: String
-    ) {
-        var db: SQLiteDatabase = writableDatabase
-
-        db.execSQL(
-            "UPDATE MEMBER SET PASSWORD = " + "'" + password + "'" + ", PASSWORD_OK = '" + password_ck + "'"
-                    + ", EMAIL = '" + email + "'" +
-                    "WHERE NAME = '" + name + "';"
-        )
-
-        db.close()
-    }
-
-    fun getResult(): String {
-        var db: SQLiteDatabase = readableDatabase
-        var result: String = ""
-
-        var cursor: Cursor = db.rawQuery("SELECT * FROM MEMBER", null)
-        while (cursor.moveToNext()) {
-            result += (cursor.getString(0)
-                    + " : "
-                    + cursor.getString(1)
-                    + " : "
-                    + cursor.getString(2)
-                    + " : "
-                    + cursor.getString(3)
-                    + " : "
-                    + cursor.getString(4)
-                    + "\n")
-
-        }
-
-        return result
-    }
-
+    // 로그인
     fun getResult1(ID: String, PASSWORD: String): Boolean {
         var db: SQLiteDatabase = readableDatabase
         var result: String = ""
