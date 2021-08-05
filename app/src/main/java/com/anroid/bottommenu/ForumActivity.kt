@@ -15,13 +15,16 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 class ForumActivity : AppCompatActivity() {
     private lateinit var title: String
     private lateinit var category: String
+    private lateinit var contentArr: ArrayList<String>
 
     lateinit var Title_TextView: TextView
     lateinit var Description_TextView: TextView
     lateinit var imageView: ImageView
-    lateinit var forumList: List<Forum>
-    lateinit var adapter: ForumExpandableAdapter
     lateinit var btn_back: FloatingActionButton
+
+    lateinit var recyclerView: RecyclerView
+    lateinit var forumList: ArrayList<Forum>
+    lateinit var adapter: ForumExpandableAdapter
 
     lateinit var myHelper: DBHelper
     lateinit var sqlDB: SQLiteDatabase
@@ -34,18 +37,22 @@ class ForumActivity : AppCompatActivity() {
         Description_TextView = findViewById<TextView>(R.id.Description_TextView)
         imageView = findViewById<ImageView>(R.id.image)
         btn_back = findViewById<FloatingActionButton>(R.id.btn_back)
+        recyclerView = findViewById<RecyclerView>(R.id.forum_recyclerView)
 
+        myHelper = DBHelper(this, "GURU", null, 1)
+
+        // 백 버튼 클릭 이벤트
         btn_back.setOnClickListener {
             onBackPressed()
         }
 
-        myHelper = DBHelper(this, "GURU", null, 1)
+        // HOME Fragment 또는 RANK Fragment에서 가져온 title 데이터를 변수에 저장 후 setText
         if(intent.hasExtra("title")) {
             title = intent.getStringExtra("title").toString()
         }
-
         Title_TextView.setText(title)
 
+        // CONTENT 테이블에서 title로 검색하여 이미지, 설명, 카테고리 데이터 변수에 저장 후 세팅
         sqlDB = myHelper.readableDatabase
         var cursor: Cursor = sqlDB.rawQuery("SELECT image, description, category FROM CONTENT WHERE title = '$title';", null)
 
@@ -58,10 +65,8 @@ class ForumActivity : AppCompatActivity() {
             Description_TextView.setText(Description)
         }
 
-        val recyclerView = findViewById<RecyclerView>(R.id.forum_recyclerView)
-        val contentArr = myHelper.WIKI_Select(title)
-
-        forumList = ArrayList()
+        // 해당 타이틀의 WIKI 데이터를 가져와 리사이클러뷰에서 출력
+        contentArr = myHelper.WIKI_Select(title)
         forumList = loadData(contentArr, category)
 
         recyclerView.setHasFixedSize(true)
@@ -74,7 +79,8 @@ class ForumActivity : AppCompatActivity() {
         cursor.close()
     }
 
-    private fun loadData(contentArray: ArrayList<String>, flag: String): List<Forum> {
+    // 인자로 받은 카테고리에 따라 strings.xml에 저장된 문자열 배열(strings.xml)의 목차 데이터, WIKI_Select()의 결과 값 리스트 반환
+    private fun loadData(contentArray: ArrayList<String>, flag: String): ArrayList<Forum> {
         val forumList = ArrayList<Forum>()
         var categories: Array<String>
         when(flag){

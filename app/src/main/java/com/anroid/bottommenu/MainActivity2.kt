@@ -54,13 +54,18 @@ class MainActivity2 : AppCompatActivity() {
         supportFragmentManager.beginTransaction().replace(fl.id, fragment).commit()
     }
 
+
+
     fun reviewToMypage() {
-        replaceFragment(MypageFragment())
-        bn.menu.getItem(2).isChecked = true
+        replaceFragment(MypageFragment())                 // Review Fragment에서 Mypage Fragment로 이동
+        bn.menu.getItem(2).isChecked = true        // 바텀 네비게이션 메뉴 3번째(Mypage) 활성화
     }
 
+
+
+
     fun mypageToReview(fragment: Fragment, reviewList: Review) {
-        val bundle = Bundle()
+        val bundle = Bundle()                                                                // 인자로 전달받은 리뷰 리스트의 데이터들을 번들에 Put
         bundle.putInt("alias", reviewList.alias)
         bundle.putString("title", reviewList.title)
         bundle.putString("genre", reviewList.genre)
@@ -71,8 +76,8 @@ class MainActivity2 : AppCompatActivity() {
         bundle.putString("emotion", reviewList.emotion)
         bundle.putString("recommend", reviewList.recommend)
         fragment.arguments = bundle
-        supportFragmentManager.beginTransaction().replace(R.id.fl_, fragment).commit()
-        bn.menu.getItem(1).isChecked = true
+        supportFragmentManager.beginTransaction().replace(R.id.fl_, fragment).commit()      // 번들과 함께 Mypage Fragment에서 Review Fragment로 이동
+        bn.menu.getItem(1).isChecked = true                                           // 바텀 네비게이션 메뉴 2번째(Review) 활성화
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

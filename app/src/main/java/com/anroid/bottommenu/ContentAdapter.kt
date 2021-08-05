@@ -27,10 +27,13 @@ class ContentAdapter(val contentList: ArrayList<Content>): RecyclerView.Adapter<
     }
 
     override fun onBindViewHolder(holder: ContentAdapter.ViewHolder, position: Int) {
+        // HOME Fragment의 리사이클러뷰의 각 아이템 데이터(이미지, 타이틀) 세팅
         val bitmap = BitmapFactory.decodeByteArray(contentList.get(position).Image, 0, contentList.get(position).Image.size)
         holder.image.setImageBitmap(bitmap)
         holder.title.text = contentList.get(position).Title
 
+        // 리사이클러뷰의 아이템 클릭 이벤트
+        // 인텐트로 해당 컨텐츠의 title과 함께 WIKI 페이지로 이동
         holder.itemView.setOnClickListener{
             val intent = Intent(holder.itemView?.context, ForumActivity::class.java)
             intent.putExtra("title", holder.title.text)
