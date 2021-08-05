@@ -79,39 +79,39 @@ class ForumActivity : AppCompatActivity() {
         cursor.close()
     }
 
-    // 인자로 받은 카테고리에 따라 strings.xml에 저장된 문자열 배열(strings.xml)의 목차 데이터, WIKI_Select()의 결과 값 리스트 반환
+    // 인자로 받은 카테고리에 따라 strings.xml에 저장된 문자열 배열(strings.xml)의 목차 텍스트, WIKI_Select()의 결과 값 리스트 반환
     private fun loadData(contentArray: ArrayList<String>, flag: String): ArrayList<Forum> {
         val forumList = ArrayList<Forum>()
         var categories: Array<String>
         when(flag){
             "MOVIE" -> {
-                categories = resources.getStringArray(R.array.category_movie)
+                categories = resources.getStringArray(R.array.category_movie)        // strings.xml의 category_movie를 목차 텍스트로 사용
                 val contents = contentArray
                 for (i in categories.indices) {
                     val forum = Forum().apply {
-                        category = categories[i]
+                        category = categories[i]                                     // i행의 목차 텍스트와 i행 내부 컨텐츠(위키 내용)
                         content = contents[i]
                     }
                     forumList.add(forum)
                 }
             }
             "MUSIC" -> {
-                categories = resources.getStringArray(R.array.category_music)
+                categories = resources.getStringArray(R.array.category_music)        // strings.xml의 category_music을 목차 텍스트로 사용
                 val contents = contentArray
                 for (i in categories.indices) {
                     val forum = Forum().apply {
-                        category = categories[i]
+                        category = categories[i]                                     // i행의 목차 텍스트와 i행 내부 컨텐츠(위키 내용)
                         content = contents[i]
                     }
                     forumList.add(forum)
                 }
             }
             "BOOK" -> {
-                categories = resources.getStringArray(R.array.category_book)
+                categories = resources.getStringArray(R.array.category_book)        // strings.xml의 category_book을 목차 텍스트로 사용
                 val contents = contentArray
                 for (i in categories.indices) {
                     val forum = Forum().apply {
-                        category = categories[i]
+                        category = categories[i]                                     // i행의 목차 텍스트와 i행 내부 컨텐츠(위키 내용)
                         content = contents[i]
                     }
                     forumList.add(forum)
