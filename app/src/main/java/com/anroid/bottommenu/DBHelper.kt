@@ -105,6 +105,8 @@ class DBHelper(
 
 
     /* REVIEW */
+
+    // REVIVEW_Select(): REVIEW 테이블 내 모든 데이터를 SELECT하여 리스트로 반환
     fun REVIEW_Select(): ArrayList<Review> {
         var db: SQLiteDatabase = readableDatabase
         val reviewList: ArrayList<Review> = ArrayList<Review>()
@@ -130,6 +132,7 @@ class DBHelper(
         return reviewList
     }
 
+    // REVIVEW_Insert(): REVIEW 테이블에 새로운 행 추가, 컨텐츠 평가 항목 업데이트
     fun REVIEW_Insert(title: String, review: String, genre: String, category: String, description: String, rating: Float, emotion: String, recommend: String) {
         var db: SQLiteDatabase = writableDatabase
         db!!.execSQL("INSERT INTO REVIEW(title, review, genre, category, description, rating, emotion, recommend) VALUES('$title', '$review', '$genre', '$category', '$description', '$rating', '$emotion', '$recommend');")
@@ -138,6 +141,7 @@ class DBHelper(
         db.close()
     }
 
+    // REVIVEW_Update(): 기존 컨텐츠 평가 항목 삭제, alias로 검색하여 리뷰 데이터 업데이트, 컨텐츠 평가 항목 업데이트
     fun REVIEW_Update(alias: Int, title: String, review: String, genre: String, category: String, description: String, rating: Float, emotion: String, recommend: String) {
         var db: SQLiteDatabase = writableDatabase
         CONTENT_Update_DEL(title, category, rating, recommend, emotion)
@@ -155,6 +159,7 @@ class DBHelper(
         db.close()
     }
 
+    // REVIVEW_Delete(): 컨텐츠 평가 항목 삭제, alias로 검색하여 REVIEW 테이블에서 해당 행 삭제
     fun REVIEW_Delete(alias: Int) {
         var db: SQLiteDatabase = writableDatabase
         var cursor: Cursor = db!!.rawQuery("SELECT * FROM REVIEW WHERE alias = '$alias';", null)
@@ -181,6 +186,8 @@ class DBHelper(
 
 
     /* CONTENT */
+
+    // CONTENT_Select_NEW(): CONTENT 테이블의 인자로 받은 (MUSIC, MOVIE, BOOK) 카테고리의 date 컬럼 기준 내림차순하여 상위 10개 컨텐츠 리스트 반환
     fun CONTENT_Select_NEW(category: String): ArrayList<Content> {
         var db: SQLiteDatabase = readableDatabase
         val contentList: ArrayList<Content> = ArrayList<Content>()
@@ -204,6 +211,7 @@ class DBHelper(
         return contentList
     }
 
+    // CONTENT_Select_EMOTION(): CONTENT 테이블에서 인자로 받은 (HAPPY/SAD/BORED) 감정 평가점수와 추천 점수로 내림차순 정렬하여 상위 10개 컨텐츠 리스트 반환
     fun CONTENT_Select_EMOTION(emotion: String): ArrayList<Content> {
         var db: SQLiteDatabase = readableDatabase
         val contentList: ArrayList<Content> = ArrayList<Content>()
@@ -224,6 +232,7 @@ class DBHelper(
         return contentList
     }
 
+    // CONTENT_Update_ADD(): 등록, 수정(이후)된 리뷰의 데이터를 title, category로 검색하여 컨텐츠 평가 항목 업데이트 +
     fun CONTENT_Update_ADD(title: String, category: String, rating: Float, recommend: String, emotion: String){
         var db: SQLiteDatabase = writableDatabase
         var cursor: Cursor = db!!.rawQuery("SELECT * FROM CONTENT WHERE title = '$title' AND category = '$category';", null)
@@ -278,6 +287,7 @@ class DBHelper(
         db.close()
     }
 
+    // CONTENT_Update_ADD(): 삭제, 수정(이전)된 리뷰의 데이터를 title, category로 검색하여 컨텐츠 평가 항목 업데이트 -
     fun CONTENT_Update_DEL(title: String, category: String, rating: Float, recommend: String, emotion: String){
         var db: SQLiteDatabase = writableDatabase
         var cursor: Cursor = db!!.rawQuery("SELECT * FROM CONTENT WHERE title = '$title' AND category = '$category';", null)
@@ -331,6 +341,8 @@ class DBHelper(
     }
 
     /* WIKI */
+
+    //WIKI_Select(): 인자로 전달받은 title로 WIKI 테이블을 검색하여 content_1 ~ content_4 리스트 반환
     fun WIKI_Select(title: String): ArrayList<String> {
         var db: SQLiteDatabase = readableDatabase
         var content: String
@@ -349,7 +361,7 @@ class DBHelper(
         db.close()
         return forumList
     }
-
+    //WIKI_Select(): WIKI 테이블 인자로 전달받은 title의 행 각각의 컬럼 업데이트
     fun WIKI_Update(update_text: String, title: String, itemPosition: Int) {
         var db: SQLiteDatabase = writableDatabase
         when (itemPosition) {
@@ -364,6 +376,8 @@ class DBHelper(
 
 
     /* RANK */
+
+    // RANK_Select(): 인자로 받은 카테고리의 컨텐츠들을 검색하여, flag 값에 따라 랜덤, 후기 많은 순, 별점 높은 순 정렬한 리스트 반환
     fun RANK_Select(flag: String, category: String): ArrayList<rankContent> {
         var db: SQLiteDatabase = readableDatabase
         val contentList: ArrayList<rankContent> = ArrayList<rankContent>()

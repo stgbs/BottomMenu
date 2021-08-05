@@ -21,6 +21,7 @@ class rankingAdapter(val context: Context, val contentList: ArrayList<rankConten
         val Title = view.findViewById<TextView>(R.id.Title_textView)
         val Descripton = view.findViewById<TextView>(R.id.description_textView)
 
+        // 랭킹 리스트 뷰 각 아이템의 데이터 세팅
         val content = contentList[position]
         val bitmap = BitmapFactory.decodeByteArray(contentList.get(position).Image, 0, contentList.get(position).Image.size)
 
@@ -29,6 +30,8 @@ class rankingAdapter(val context: Context, val contentList: ArrayList<rankConten
         Title.text = content.Title
         Descripton.text = content.description
 
+        // 랭킹 리스트뷰 아이템 클릭 이벤트
+        // 인텐트로 클릭된 아이템의 title을 가지고 WIKI 페이지로 이동
         view.setOnClickListener{
             val intent = Intent(view?.context, ForumActivity::class.java)
             intent.putExtra("title", Title.text)
